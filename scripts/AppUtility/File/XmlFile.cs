@@ -66,12 +66,12 @@ namespace common
             catch
             {
                 //LogDebug.GetInstance().LogError("打开文件失败:" + xml);
-				debug.GetInstance().Error("load xml failed");
+				//debug.GetInstance().Error("load xml failed");
                 return false;
             }
 
             //LogDebug.GetInstance().LogPrint("打开文件成功:" + xml);
-			debug.GetInstance().Error("load xml ok ");
+			//debug.GetInstance().Error("load xml ok ");
             return true;
         }
         

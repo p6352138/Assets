@@ -71,7 +71,7 @@ namespace common{
 			loadingNum = 6 ;
 			//gameGlobal.g_rescoureLoader.LoadRescoure(common.configPath,LoadConfig,ref progress);
 		}
-		
+		/*
 		public void LoadConfig(WWW assert){
 			MonoBehaviour.print("load config ok");
 			str = assert.text ;
@@ -221,7 +221,7 @@ namespace common{
 		
 		}
 		
-		
+		*/
 		
 		void CreateFile(string path,string name,byte[] info)
 		{
@@ -261,15 +261,18 @@ namespace common{
 		{
 			File.Delete(path+"//"+ name);
 		}
-		
+
 		public BassStruct GetData(int id, CsvType type){
+			BassStruct reuslt = new BassStruct ();
+			return reuslt;
+			/*
 			switch(type){
 			case CsvType.CSV_TYPE_BUFF:{
 				if(buffCsvData.dataDic.ContainsKey(id)){
 					return buffCsvData.dataDic[id] ;
 				}
 				else{
-					debug.GetInstance().Error("Get buff csv data error:" + id);
+					//debug.GetInstance().Error("Get buff csv data error:" + id);
 					return null ;
 				}
 			}
@@ -279,7 +282,7 @@ namespace common{
 					return dictionaryCsvData.dataDic[id] ;
 				}
 				else{
-					debug.GetInstance().Error("Get dictionary csv data error:" + id);
+					//debug.GetInstance().Error("Get dictionary csv data error:" + id);
 					return null ;
 				}
 			}
@@ -299,7 +302,7 @@ namespace common{
 					return playerCsvData.dataDic[id] ;
 				}
 				else{
-					debug.GetInstance().Error("Get player csv data error:" + id);
+					//debug.GetInstance().Error("Get player csv data error:" + id);
 				}
 				return null ;
 			}
@@ -388,8 +391,7 @@ namespace common{
 			default:{
 				return null ;
 			}
-
-			}
+			}*/
 		}
 	}
 }

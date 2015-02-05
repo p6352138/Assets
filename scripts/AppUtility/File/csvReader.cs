@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic ;
 using AppUtility ;
-using GameLogical;
+//using GameLogical;
 
 
 namespace common{
@@ -43,8 +43,9 @@ namespace common{
 			itemNameArray = null ;
 			stringData = null ;
 		}
-		
+
 		void Serialize(string[] lineData,CsvType type){
+			/*
 			if(itemNameArray.Length != lineData.Length){
 				debug.GetInstance().Warmming("csv data warmming:" + lineData);
 				return  ;
@@ -399,7 +400,7 @@ namespace common{
 							
 						}
 					}
-				}*/
+				}
 				
 				str = typeData["talkIDInSleep"] as string;
 				if(str != null){
@@ -779,15 +780,15 @@ namespace common{
 						data.filTaskTalkId.Add(int.Parse(buffRateList[i]));
 					}
 				}
-				/*
+
 				buffRateStr = (string)typeData["npcResId"] ;
 				buffRateList= buffRateStr.Split('#');
 				data.npcResId = "";
-				 */
-				
+				 
+			
 				if(dataDic.ContainsKey(data.id))
 				{
-					debug.GetInstance().Error("task moudle data have same id:" + data.id);
+					//debug.GetInstance().Error("task moudle data have same id:" + data.id);
 				}
 				else{
 					dataDic.Add(data.id,data);
@@ -796,14 +797,12 @@ namespace common{
 				}
 				break;
 				case CsvType.CSV_TYPE_EXPUPGRADE:{
-				ExpUpGradeMoudleData data = new ExpUpGradeMoudleData(typeData);
-				dataDic.Add(data.ID,data);
+				//ExpUpGradeMoudleData data = new ExpUpGradeMoudleData(typeData);
+				//dataDic.Add(data.ID,data);
 				}
 				break ;
-			}
-			
+			}*/
 		}
-		
 	}
 }
 
