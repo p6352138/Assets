@@ -79,7 +79,7 @@ public class RescourseMgr : MonoBehaviour {
 		textStr += assert.assetBundle + "\n";
 		textStr += assert.assetBundle.name + "\n";
 		m_UIResource = assert.assetBundle ;
-		//common.debug.GetInstance().Log("LoadResource:" + assert.assetBundle.name);
+		common.debug.GetInstance().Log("LoadResource:" + assert.assetBundle.name);
 		/*m_allAssert  = assert.assetBundle.LoadAll();
 		textStr += "assert.assetBundle.LoadAll success" + "\n";
 		foreach(Object temp in m_allAssert){
@@ -90,14 +90,15 @@ public class RescourseMgr : MonoBehaviour {
 			textStr += temp.name + "\n";	
 		}*/
 		int pro = 0;
-		//gameGlobal.g_rescoureLoader.LoadRescoure(PathURL + "ALL.assetbundle",LoadResource,ref pro);	
+		gameGlobal.g_rescoureLoader.LoadRescoure(PathURL + "ALL.assetbundle",LoadResource,ref pro);
+		
 	}
 	
 	public void LoadResource(WWW assert){
 		textStr += assert.assetBundle + "\n";
 		textStr += assert.assetBundle.name + "\n";
 		m_RoleResource = assert.assetBundle ;
-		//common.debug.GetInstance().Log("LoadResource:" + assert.assetBundle.name);
+		common.debug.GetInstance().Log("LoadResource:" + assert.assetBundle.name);
 		/*m_allAssert  = assert.assetBundle.LoadAll();
 		textStr += "assert.assetBundle.LoadAll success" + "\n";
 		foreach(Object temp in m_allAssert){
@@ -107,7 +108,7 @@ public class RescourseMgr : MonoBehaviour {
 			}
 			textStr += temp.name + "\n";	
 		}*/
-		//gameGlobal.InitUI();
+		gameGlobal.InitUI();
 	}
 	
 	public IEnumerator LoadAssertIphone(){
@@ -127,7 +128,7 @@ public class RescourseMgr : MonoBehaviour {
 				if(!m_resourceList.ContainsKey(obj.name))
 					m_resourceList.Add(obj.name,(GameObject)obj) ;
 				else{
-					//common.debug.GetInstance().Error("same resource name:" + obj.name);
+					common.debug.GetInstance().Error("same resource name:" + obj.name);
 				}
 			}
 		}
@@ -139,11 +140,11 @@ public class RescourseMgr : MonoBehaviour {
 				if(!m_resourceList.ContainsKey(obj.name))
 					m_resourceList.Add(obj.name,(GameObject)obj) ;
 				else{
-					//common.debug.GetInstance().Error("same resource name:" + obj.name);
+					common.debug.GetInstance().Error("same resource name:" + obj.name);
 				}
 			}
 		}
-		//gameGlobal.InitUI();
+		gameGlobal.InitUI();
 	}
 	
 	private IEnumerator LoadAllGameObject(string path){
@@ -187,7 +188,7 @@ public class RescourseMgr : MonoBehaviour {
 			return m_resourceList[name] ;
 		}
 		else{
-			//common.debug.GetInstance().Warmming("Load resource error:" + name);
+			common.debug.GetInstance().Warmming("Load resource error:" + name);
 			return null ;
 		}
 #else

@@ -71,7 +71,7 @@ namespace common{
 			loadingNum = 6 ;
 			//gameGlobal.g_rescoureLoader.LoadRescoure(common.configPath,LoadConfig,ref progress);
 		}
-		/*
+		
 		public void LoadConfig(WWW assert){
 			MonoBehaviour.print("load config ok");
 			str = assert.text ;
@@ -221,7 +221,7 @@ namespace common{
 		
 		}
 		
-		*/
+		
 		
 		void CreateFile(string path,string name,byte[] info)
 		{
@@ -261,7 +261,7 @@ namespace common{
 		{
 			File.Delete(path+"//"+ name);
 		}
-		/*
+		
 		public BassStruct GetData(int id, CsvType type){
 			switch(type){
 			case CsvType.CSV_TYPE_BUFF:{
@@ -390,7 +390,7 @@ namespace common{
 			}
 
 			}
-		}*/
+		}
 	}
 }
 

@@ -11,8 +11,9 @@ using NetWork.DataBuffer;
 using NetWork.NetModule;
 using NetWork.MsgBuffer;
 using UnityEngine ;
-//using GameLogical.GameEnitity;
-//using GameLogical;
+using GameLogical.GameEnitity;
+
+using GameLogical;
 
 namespace NetWork.NetSession
 {
