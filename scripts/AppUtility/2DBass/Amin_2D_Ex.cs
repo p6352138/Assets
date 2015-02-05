@@ -10,7 +10,7 @@ using UnityEditor;
 
 
 namespace Bass2D{
-
+	/*
 	public class AnimFrameData : BassStruct{
 		public int x ;
 		public int y ;
@@ -351,6 +351,6 @@ namespace Bass2D{
 			uv[3].y = (maxSize.y - (y + size.y)) / maxSize.y ;
 			return uv ;
 		}
-	}
+	}*/
 }
 

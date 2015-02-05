@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic ;
 using AppUtility ;
-using GameLogical;
+//using GameLogical;
 
 
 namespace common{
@@ -46,7 +46,7 @@ namespace common{
 		
 		void Serialize(string[] lineData,CsvType type){
 			if(itemNameArray.Length != lineData.Length){
-				debug.GetInstance().Warmming("csv data warmming:" + lineData);
+				//debug.GetInstance().Warmming("csv data warmming:" + lineData);
 				return  ;
 			}
 			
@@ -69,7 +69,7 @@ namespace common{
 				stringData += ',';
 			}
 			stringData += "}" ;
-			
+			/*
 			Dictionary<string,object> typeData = (Dictionary<string,object>)Json.Deserialize(stringData);
 			//TYPE type = new TYPE(typeData);
 			switch(type){
@@ -400,7 +400,7 @@ namespace common{
 						}
 					}
 				}*/
-				
+				/*
 				str = typeData["talkIDInSleep"] as string;
 				if(str != null){
 					reslut = str.Split('#');
@@ -784,7 +784,7 @@ namespace common{
 				buffRateList= buffRateStr.Split('#');
 				data.npcResId = "";
 				 */
-				
+				/*
 				if(dataDic.ContainsKey(data.id))
 				{
 					debug.GetInstance().Error("task moudle data have same id:" + data.id);
@@ -800,7 +800,7 @@ namespace common{
 				dataDic.Add(data.ID,data);
 				}
 				break ;
-			}
+			}*/
 			
 		}
 		

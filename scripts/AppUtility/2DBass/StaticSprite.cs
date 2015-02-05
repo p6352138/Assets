@@ -9,6 +9,7 @@ namespace Bass2D{
 	[RequireComponent(typeof(MeshFilter))]
 	[RequireComponent(typeof(MeshRenderer))]
 	public class StaticSprite : MonoBehaviour {
+		/*
 		// 1----2
 		// |  / |
 		// | /  |
@@ -171,7 +172,7 @@ namespace Bass2D{
 
 			newUV = _uv ;
 			mesh.uv = newUV;
-		}
+		}*/
 	}
 }
 
