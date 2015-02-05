@@ -13,6 +13,7 @@ using NetWork.MsgBuffer;
 using UnityEngine ;
 //using GameLogical.GameEnitity;
 //using GameLogical;
+using GameLogical;
 
 namespace NetWork.NetSession
 {
