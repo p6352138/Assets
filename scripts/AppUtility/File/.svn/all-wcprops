@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/FunTown/!svn/ver/3745/trunk/code/client/mProject/Assets/scripts/AppUtility/File
+END
+csvReader.cs
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/FunTown/!svn/ver/3745/trunk/code/client/mProject/Assets/scripts/AppUtility/File/csvReader.cs
+END
+XmlFile.cs
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/FunTown/!svn/ver/566/trunk/code/client/mProject/Assets/scripts/AppUtility/File/XmlFile.cs
+END
+WriteReadList.cs
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/FunTown/!svn/ver/566/trunk/code/client/mProject/Assets/scripts/AppUtility/File/WriteReadList.cs
+END
+csvReader.cs.meta
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/FunTown/!svn/ver/566/trunk/code/client/mProject/Assets/scripts/AppUtility/File/csvReader.cs.meta
+END
+XmlFile.cs.meta
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/FunTown/!svn/ver/566/trunk/code/client/mProject/Assets/scripts/AppUtility/File/XmlFile.cs.meta
+END
+fileMgr.cs
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/FunTown/!svn/ver/3629/trunk/code/client/mProject/Assets/scripts/AppUtility/File/fileMgr.cs
+END
+WriteReadList.cs.meta
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/FunTown/!svn/ver/566/trunk/code/client/mProject/Assets/scripts/AppUtility/File/WriteReadList.cs.meta
+END
+fileMgr.cs.meta
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/FunTown/!svn/ver/65/trunk/code/client/mProject/Assets/scripts/AppUtility/File/fileMgr.cs.meta
+END

@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/FunTown/!svn/ver/2921/trunk/code/client/mProject/Assets/scripts/AppUtility/ResourceLoader
+END
+RescoureLoader.cs
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/FunTown/!svn/ver/2658/trunk/code/client/mProject/Assets/scripts/AppUtility/ResourceLoader/RescoureLoader.cs
+END
+RescourseMgr.cs
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/FunTown/!svn/ver/2921/trunk/code/client/mProject/Assets/scripts/AppUtility/ResourceLoader/RescourseMgr.cs
+END
+RescoureLoader.cs.meta
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/FunTown/!svn/ver/1903/trunk/code/client/mProject/Assets/scripts/AppUtility/ResourceLoader/RescoureLoader.cs.meta
+END
+RescourseMgr.cs.meta
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/FunTown/!svn/ver/1903/trunk/code/client/mProject/Assets/scripts/AppUtility/ResourceLoader/RescourseMgr.cs.meta
+END
+Editor.meta
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/FunTown/!svn/ver/1903/trunk/code/client/mProject/Assets/scripts/AppUtility/ResourceLoader/Editor.meta
+END
