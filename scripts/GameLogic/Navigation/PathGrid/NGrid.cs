@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using GameEntity;
 
 namespace GameLogic.Navigation{
 	public class NGrid  {
@@ -34,19 +35,26 @@ namespace GameLogic.Navigation{
 			Depth = 1.0f;
 		}
 
-		public static void DebugDraw()
+		public virtual void Awake(){
+			m_Rows = GameDefine.NumberOfRows;
+			m_Columns = GameDefine.NumberOfColumns;
+			m_cellSize = GameDefine.CellSize;
+		}
+
+		public static void DebugDraw(Vector3 origin)
 		{
+			m_origin = origin;
 			Vector3 startPos,endPos;
 
 			for(int i=0;i<m_Rows+1;i++){
 				startPos = m_origin + i * XAxis * m_cellSize;
-				endPos = startPos + i * ZAxis * Width;
+				endPos = startPos + ZAxis * Width;
 				Debug.DrawLine(startPos,endPos);
 			}
 
 			for(int i=0;i<m_Columns+1;i++){
 				startPos = m_origin + i * ZAxis * m_cellSize;
-				endPos = startPos + i * XAxis * Height;
+				endPos = startPos + XAxis * Height;
 				Debug.DrawLine(startPos,endPos);
 			}
 		}

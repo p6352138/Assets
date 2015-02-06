@@ -12,18 +12,27 @@ namespace GameEntity{
 		#endregion
 
 		#region public function
-		/*
-		protected CCearcueMgr(){
-			m_curTerrian = new CTerrian();
-			m_curPlayer = new CPlayer();
-		}*/
 
-		public static void CreateCearcue(CCearcueType type)
+		public GameObject testTerrian;
+		public void setTerrian(GameObject ob)
 		{
+			testTerrian = ob;
+		}
+
+		public void CreateCearcue(int id,CCearcueType type)
+		{
+			//load prefab resoure
+			GameObject go = testTerrian;
+
 			if(type == CCearcueType.Player){
 			}
 			else if(type == CCearcueType.Terrian){
+				m_curTerrian = new CTerrian(id,go);
 			}
+		}
+
+		public Vector3 GetTerrainPosition(){
+			return m_curTerrian.GetTerrianPosion();
 		}
 		#endregion
 	}
