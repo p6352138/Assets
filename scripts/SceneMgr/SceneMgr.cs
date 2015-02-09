@@ -2,6 +2,7 @@
 using System.Collections;
 using GameEntity;
 using GameLogic.Navigation;
+using NetWork.NetSession;
 
 public class SceneMgr : MonoBehaviour {
 
@@ -17,6 +18,8 @@ public class SceneMgr : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		m_curSceneId = 1;
+
+		NetSessionMgr.GetInstance().Init();
 
 		if(m_curSceneId == GameDefine.FightSceneID){
 			CCearcueMgr.GetInstance().setTerrian(Terrian);
