@@ -33,6 +33,10 @@ To use Waypoints path system – you should just:
 4.	Attach WaypointMover script to any gameObject you want to move along path (and assign WaypointHolder to its related property).
 5.	If needed - tune movement parameters… and….   Enjoy!
 
+IP:113.110.183.73
+port:15689
+Login Message:common#player_login
+
 
 
 

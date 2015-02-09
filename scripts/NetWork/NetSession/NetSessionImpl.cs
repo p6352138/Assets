@@ -115,16 +115,7 @@ namespace NetWork.NetSession
 			MonoBehaviour.print("close socket" + this.GetSessionID());
 			if (netSocket != null && GameDataCenter.GetInstance().SocketReset != 1)
             {
-	//			gameGlobal.g_curPage.hide();
-	//			gameGlobal.g_mainUI.hide();
-	//			gameGlobal.g_mainUI.gameObject.SetActive(false);
-	//			gameGlobal.g_LoginUI.show();
-	//			SocketReset message = new SocketReset();
-				//message.ob = this.gameObject.transform.parent.gameObject ;
-	//			EnitityMgr.GetInstance().OnMessage(message);
-
 				GameDataCenter.GetInstance().SocketReset = 1;
-//				gameGlobal.g_SelectPlayerUI.m_CanClick = true;
 
                 netSocket.Shutdown(SocketShutdown.Both);
                 netSocket.Close();
@@ -400,16 +391,15 @@ namespace NetWork.NetSession
             return SendMessage(msgCommand, messageBuffer, 0, bufferLength);            
         }
 	
-	public Int32 SendMessage(string head,Dictionary<string,object> data){
-	    Dictionary<string,object> iList = new Dictionary<string, object>();
-    	iList["head"] = head ;
-	    iList["body"] = data ;
-	    string result = AppUtility.Json.Serialize(iList);
-			UnityEngine.Debug.Log(result);
-	    return SendMessage(0, Encoding.Default.GetBytes(result));
-	}
-		
-		
+		public Int32 SendMessage(string head,Dictionary<string,object> data){
+		    Dictionary<string,object> iList = new Dictionary<string, object>();
+	    	iList["head"] = head ;
+		    iList["body"] = data ;
+		    string result = AppUtility.Json.Serialize(iList);
+				UnityEngine.Debug.Log(result);
+		    return SendMessage(0, Encoding.Default.GetBytes(result));
+		}
+
 		/*public Int32 SendMessage(string json){
 			byte[] messageBuffer = Encoding.Default.GetBytes(json);
 			return 0 ;
