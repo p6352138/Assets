@@ -12,7 +12,7 @@ namespace NetWork.NetSession
 		#endregion
 
 		public void Init(){
-			NetModuleMgr.GetInstance().Init();
+			//NetModuleMgr.GetInstance().Init();
 			m_NetImpl.Init();
 		}
 	}

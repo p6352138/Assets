@@ -27,6 +27,36 @@ namespace GameLogic.Navigation{
 		{
 			get{return m_Columns*m_cellSize;}
 		}
+
+		public int NumberOfCells
+		{
+			get { return m_Rows * m_Columns; }
+		}
+
+		public Vector3 Origin
+		{
+			get{return m_origin;}
+		}
+
+		public float Left
+		{
+			get{return Origin.x;}
+		}
+
+		public float Right
+		{
+			get{return Origin.x + Width;}
+		}
+
+		public float Top
+		{
+			get{return Origin.z + Height;}
+		}
+
+		public float Bottom
+		{
+			get{return Origin.z;}
+		}
 		#endregion
 
 		static NGrid(){
@@ -58,5 +88,32 @@ namespace GameLogic.Navigation{
 				Debug.DrawLine(startPos,endPos);
 			}
 		}
+
+		#region 判断是否在路点网格内
+		public bool IsInBounds(int col,int row){
+			if(col < 0 || col >= m_Columns){
+				return false;
+			}
+			else if(row < 0 || row >= m_Rows){
+				return false;
+			}
+			else{
+				return true;
+			}
+		}
+
+		public bool IsInBounds(int index){
+			return ( index >= 0 && index < NumberOfCells );
+		}
+
+		// pass in world space coords
+		public bool IsInBounds(Vector3 pos)
+		{
+			return ( pos.x >= Left &&
+			        pos.x <= Right &&
+			        pos.z <= Top &&
+			        pos.z >= Bottom );
+		}
+		#endregion
 	}
 }

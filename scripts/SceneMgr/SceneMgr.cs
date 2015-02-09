@@ -19,7 +19,7 @@ public class SceneMgr : MonoBehaviour {
 	void Start () {
 		m_curSceneId = 1;
 
-		NetSessionMgr.GetInstance().Init();
+		//NetSessionMgr.GetInstance().Init();
 
 		if(m_curSceneId == GameDefine.FightSceneID){
 			CCearcueMgr.GetInstance().setTerrian(Terrian);

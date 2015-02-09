@@ -34,6 +34,10 @@ namespace GameEntity{
 		public Vector3 GetTerrainPosition(){
 			return m_curTerrian.GetTerrianPosion();
 		}
+
+		public List<Bounds> GetTerrainBounds(){
+			return m_curTerrian.GetTerrianBounds();
+		}
 		#endregion
 	}
 }
