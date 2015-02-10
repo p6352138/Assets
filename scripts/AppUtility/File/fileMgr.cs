@@ -67,7 +67,7 @@ namespace common{
 		
 		public void Init(){
 
-			int progress = 0 ;
+			//int progress = 0 ;
 			loadingNum = 6 ;
 			//gameGlobal.g_rescoureLoader.LoadRescoure(common.configPath,LoadConfig,ref progress);
 		}

@@ -33,7 +33,7 @@ namespace GameLogic.Navigation{
 			get { return m_Rows * m_Columns; }
 		}
 
-		public Vector3 Origin
+		public static Vector3 Origin
 		{
 			get{return m_origin;}
 		}
@@ -87,6 +87,22 @@ namespace GameLogic.Navigation{
 				endPos = startPos + XAxis * Height;
 				Debug.DrawLine(startPos,endPos);
 			}
+		}
+
+		// pass in world space coords. Get the tile index at the passed position
+		public int GetCellIndex(Vector3 pos)
+		{
+			if ( !IsInBounds(pos) )
+			{
+				return SimpleAI.Planning.Node.kInvalidIndex;	
+			}
+			
+			pos -= Origin;
+			
+			int col = (int)(pos.x / m_cellSize);
+			int row = (int)(pos.z / m_cellSize);
+			
+			return (row * m_Columns + col);
 		}
 
 		#region 判断是否在路点网格内

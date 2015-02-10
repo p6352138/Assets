@@ -13,7 +13,7 @@ public class CommonMessageHandle
 		{
 			Dictionary<string,object> dataListJson = (Dictionary<string,object>)data ;
 			MonoBehaviour.print(dataListJson["msg"]);
-			DictionaryData dic = (DictionaryData)fileMgr.GetInstance().GetData(73,CsvType.CSV_TYPE_DICTIONARY);
+			//DictionaryData dic = (DictionaryData)fileMgr.GetInstance().GetData(73,CsvType.CSV_TYPE_DICTIONARY);
 
 			int i = 0;
 			if(object.ReferenceEquals(dataListJson["msg"].GetType(),i.GetType())){
@@ -73,7 +73,7 @@ public class CommonMessageHandle
 
 			}
 			catch(UnityException e){
-				//common.debug.GetInstance().Error(e.ToString());
+				Debug.LogError(e.ToString());
 			}
 
 			//gameGlobal.g_tipOneButtom.Show(dataListJson["msg"].ToString());

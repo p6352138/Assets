@@ -18,6 +18,7 @@ using GameMessgeHandle ;
 //using GameLogical;
 using common ;
 //using GameLogical.Guide;
+using GameLogic;
 
 
 
@@ -35,14 +36,14 @@ public class main : MonoBehaviour {
 	private float	deltaTime ;
 
 	public static long  heart_beat 	   	= 0 ;
-	private long  scoket_delta	   		= 0 ;
+	//private long  scoket_delta	   		= 0 ;
 
-	static  bool shutDownNet = false;
+	//static  bool shutDownNet = false;
 	
 	static public string connectAgain = "请重新连接网络";
 	static public string connectLost = "网络没有连接";
-	Rect rect=new Rect(680,Screen.height-50,1000,1000);
-	GUIStyle style=new GUIStyle();
+	//Rect rect=new Rect(680,Screen.height-50,1000,1000);
+	//GUIStyle style=new GUIStyle();
 	void OnDestroy() {
 		if(netSession != null){
 			NetFrameMgr.GetInstance().CloseNetSession(netSession.GetSessionID());
@@ -334,8 +335,8 @@ public class main : MonoBehaviour {
 		}
 		netSession.SendMessage(head,dataList);
 		//gameGlobal.g_LoadingPage.show();
-		if(GameDataCenter.GetInstance().userLoginData != null){
-			heart_beat = GameDataCenter.GetInstance().userLoginData.time ;
+		if(GameDataCenter.GetInstance().heartTime != null){
+			heart_beat = GameDataCenter.GetInstance().heartTime ;
 		}
 
 	}
@@ -344,7 +345,7 @@ public class main : MonoBehaviour {
 	{
 		print("send message:" + head) ;
 		netSession.SendMessage(head,dataList);
-		heart_beat = GameDataCenter.GetInstance().userLoginData.time ;
+		heart_beat = GameDataCenter.GetInstance().heartTime ;
 	}
 	
 	public static void SendChatMessage(string head, Dictionary<string,object> dataList){
@@ -357,7 +358,7 @@ public class main : MonoBehaviour {
 
 	public static void ReChangeAccount(){
 		
-		main.SendNoReturnNetMessage(PlayerMessageRegister.CLOSE_GAME, null);
+		//main.SendNoReturnNetMessage(PlayerMessageRegister.CLOSE_GAME, null);
 		if(netSession != null){
 			NetFrameMgr.GetInstance().CloseNetSession(netSession.GetSessionID());
 			netSession = null ;
@@ -379,7 +380,7 @@ public class main : MonoBehaviour {
 			Destroy(parentUI.transform.GetChild(i).gameObject);
 		}
 
-		shutDownNet = true;
+		//shutDownNet = true;
 		fileMgr.GetInstance().monsterCsvData.dataDic.Clear();
 		fileMgr.GetInstance().resouceCsvData.dataDic.Clear();
 		//fileMgr.GetInstance().guideCsvData.dataDic.Clear();
@@ -429,10 +430,10 @@ public class main : MonoBehaviour {
 		}
 		else if(connectRet == true){
 			//GameMessgeHandle.MessageRegister.RegisterMessage();
-			Dictionary<string,object> dic =  new Dictionary<string, object>();
-			dic.Add("userId",GameDataCenter.GetInstance().userLoginData.userDto.userId);
-			dic.Add("playerId",GameDataCenter.GetInstance().playerData.playerId);
-			SendNetMessage(LoginMessageRegister.COMMON_RESET_LOGIN,dic);
+			//Dictionary<string,object> dic =  new Dictionary<string, object>();
+			//dic.Add("userId",GameDataCenter.GetInstance().userLoginData.userDto.userId);
+			//dic.Add("playerId",GameDataCenter.GetInstance().playerData.playerId);
+			//SendNetMessage(LoginMessageRegister.COMMON_RESET_LOGIN,dic);
 			
 			GameDataCenter.GetInstance().SocketReset = 2;
 		}

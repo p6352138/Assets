@@ -30,7 +30,9 @@ public class SceneMgr : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () { 
-		if(isDebug)
+		if(isDebug){
 			NavigationMgr.GetInstance().showGrid();
+			NavigationMgr.GetInstance().showObstacleGrid();
+		}
 	}
 }

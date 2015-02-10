@@ -24,7 +24,7 @@ public class RescoureLoader : MonoBehaviour
 	public void Init(){
 		m_handleDic = new Dictionary<string, sAddData>();
 		m_deltaTime = 0.2f ;
-		int progress = 0 ;
+		//int progress = 0 ;
 		//LoadRescoure(common.common.configPath,fileMgr.GetInstance().LoadConfig,ref progress);
 	}
 	

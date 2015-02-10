@@ -89,7 +89,7 @@ public class RescourseMgr : MonoBehaviour {
 			}
 			textStr += temp.name + "\n";	
 		}*/
-		int pro = 0;
+		//int pro = 0;
 		//gameGlobal.g_rescoureLoader.LoadRescoure(PathURL + "ALL.assetbundle",LoadResource,ref pro);
 		
 	}

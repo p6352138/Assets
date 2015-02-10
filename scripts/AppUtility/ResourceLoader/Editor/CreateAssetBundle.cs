@@ -54,7 +54,7 @@ public class CreateAssetBundle : MonoBehaviour {
 		
  	    foreach (Object obj in SelectedAsset)
  	    {
- 	        string sourcePath = AssetDatabase.GetAssetPath (obj);
+ 	        //string sourcePath = AssetDatabase.GetAssetPath (obj);
  	        string targetPath = Application.dataPath + "/StreamingAssets/" + obj.name + ".assetbundle";
  	        if (BuildPipeline.BuildAssetBundle (obj, null, targetPath, BuildAssetBundleOptions.CollectDependencies,buildTarget)) {
  	            Debug.Log(obj.name +"resource pack success");
