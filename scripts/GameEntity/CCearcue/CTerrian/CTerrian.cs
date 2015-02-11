@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using GameLogic.Navigation;
 
 namespace GameEntity{
 public class CTerrian : CCearcue {
@@ -33,6 +34,8 @@ public class CTerrian : CCearcue {
 					m_BoundsList.Add(box.bounds);
 				}
 			}
+
+			NavigationMgr.GetInstance().InitPathData(m_BoundsList);
 		}
 
 		#region public function

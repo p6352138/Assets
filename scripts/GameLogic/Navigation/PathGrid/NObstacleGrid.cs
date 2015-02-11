@@ -6,38 +6,28 @@ namespace GameLogic.Navigation{
 	public class NObstacleGrid {
 
 		#region private Properties
-
+		private List<Bounds> m_boundslist;
+		private List<NObstacle> m_Obstaclelist;
 		#endregion
 
 		#region public function
-		public static void DebugShowObstacleGrid(List<Bounds> boundslist){
-			foreach(Bounds item in boundslist)
-				GetObstructedCells(item);
+		public void Init(List<Bounds> boundslist)
+		{
+			m_boundslist = boundslist;
+			m_Obstaclelist = new List<NObstacle>();
+
+			foreach(Bounds bound in boundslist){
+				NObstacle temp = new NObstacle();
+				temp.InitObstacle(bound);
+				m_Obstaclelist.Add(temp);
+				temp = null;
+			}
 		}
 
-		public static int[] GetObstructedCells(Bounds bounds)
-		{
-			int[] result = {1};
-
-			//calculation Obstacle bounds position in world coordtion
-			Vector3 upperLeftPos = new Vector3(bounds.min.x,NGrid.Origin.y,bounds.max.z);
-			Vector3 upperRightPos = new Vector3(bounds.max.x,NGrid.Origin.y,bounds.max.z);
-			Vector3 lowerLeftPos = new Vector3(bounds.min.x,NGrid.Origin.y,bounds.min.z);
-			Vector3 lowerRightPos = new Vector3(bounds.max.x,NGrid.Origin.y,bounds.min.z);
-
-			Vector3 horizDir = (upperRightPos - upperLeftPos).normalized;
-			Vector3 vertDir = (upperLeftPos - lowerLeftPos).normalized;
-			float horizLength = bounds.size.x;
-			float vertLength = bounds.size.z;
-
-			//debug show Obstacle in pathgrid
-			Color red = new Color(1,0,0);
-			Debug.DrawLine(upperLeftPos, upperRightPos,red);
-			Debug.DrawLine(upperRightPos, lowerRightPos,red);
-			Debug.DrawLine(lowerRightPos, lowerLeftPos,red);
-			Debug.DrawLine(lowerLeftPos, upperLeftPos,red);
-
-			return result;
+		public void DebugShowObstacleGrid(){
+			foreach(NObstacle ob in m_Obstaclelist){
+				ob.Draw();
+			}
 		}
 		#endregion
 	}

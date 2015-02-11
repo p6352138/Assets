@@ -2,24 +2,34 @@
 using System.Collections;
 using GameEntity;
 using AppUtility;
+using System.Collections.Generic;
 
 namespace GameLogic.Navigation{ 
 	class NavigationMgr : Singleton<NavigationMgr> {
 		#region private Fields
-		private NGrid m_grid;
+		private NPathGrid m_grid;
 		#endregion
 
+		#region Init data
 		public void init(){
-			m_grid = new NGrid();
+			m_grid = new NPathGrid();
 		}
 
+		public void InitPathData(List<Bounds> bounds)
+		{
+			m_grid.InitObstacleData(bounds);
+		}
+		#endregion
+
+		#region showDebug
 		public void showGrid(){
 			NGrid.DebugDraw(CCearcueMgr.GetInstance().GetTerrainPosition());
 		}
 
 		public void showObstacleGrid(){
-			NObstacleGrid.DebugShowObstacleGrid(CCearcueMgr.GetInstance().GetTerrainBounds());
+			m_grid.DrawObstacle();
 		}
+		#endregion
 
 		public NGrid GetGrid(){
 			return m_grid;

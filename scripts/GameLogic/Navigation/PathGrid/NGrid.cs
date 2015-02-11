@@ -105,6 +105,34 @@ namespace GameLogic.Navigation{
 			return (row * m_Columns + col);
 		}
 
+		/// <summary>
+		/// Returns the lower left position of the grid cell at the passed tile index. The origin of the grid is at the lower left,
+		/// so it uses a cartesian coordinate system.
+		/// </summary>
+		/// <param name="index">index to the grid cell to consider</param>
+		/// <returns>Lower left position of the grid cell (origin position of the grid cell), in world space coordinates</returns>
+		public Vector3 GetCellPosition(int index)
+		{
+			int row = GetRow(index);
+			int col = GetColumn(index);
+			float x = col * m_cellSize;
+			float z = row * m_cellSize;
+			Vector3 cellPosition = Origin + new Vector3(x, 0.0f, z);
+			return cellPosition;
+		}
+
+		public int GetRow(int index)
+		{
+			int row = index / m_Columns;
+			return row;
+		}
+		
+		public int GetColumn(int index)
+		{
+			int col = index % m_Columns;
+			return col;
+		}
+
 		#region 判断是否在路点网格内
 		public bool IsInBounds(int col,int row){
 			if(col < 0 || col >= m_Columns){
