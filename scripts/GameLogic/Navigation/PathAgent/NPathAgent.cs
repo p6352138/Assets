@@ -14,10 +14,19 @@ namespace GameLogic.Navigation
 		private bool 			  m_bInitialized;
 		#endregion
 
+		#region public function
+		public Vector3 GetPositon()
+		{
+			Vector3 result = new Vector3(0,0,0);
+			return result;
+		}
+
+		#endregion
+
 		#region interface function
 		public Vector3 GetPathAgentFootPos()
 		{
-			NavigationMgr.GetInstance().
+			return NavigationMgr.GetInstance().GetGrid().GetValidPathFloorPos(GetPositon());
 		}
 
 		public void OnPathAgentRequestSucceeded(NIPathRequestQuery request)

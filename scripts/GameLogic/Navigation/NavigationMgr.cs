@@ -8,6 +8,7 @@ namespace GameLogic.Navigation{
 	class NavigationMgr : Singleton<NavigationMgr> {
 		#region private Fields
 		private NPathGrid m_grid;
+		private NPathAgent m_agent;
 		#endregion
 
 		#region Init data
@@ -31,7 +32,7 @@ namespace GameLogic.Navigation{
 		}
 		#endregion
 
-		public NGrid GetGrid(){
+		public NPathGrid GetGrid(){
 			return m_grid;
 		}
 	}

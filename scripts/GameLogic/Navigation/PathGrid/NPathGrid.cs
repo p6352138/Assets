@@ -4,6 +4,17 @@ using System.Collections.Generic;
 
 namespace GameLogic.Navigation{
 	public class NPathGrid : NSolidityGrid,NIPathTerrain {
+
+		public enum eNeighborDirection
+		{
+			kNoNeighbor = -1,
+			kLeft,
+			kTop,
+			kRight,
+			kBottom,
+			kNumNeighbors
+		};
+
 		#region private field
 		private NObstacleGrid m_obstacleGrid;
 		#endregion
@@ -23,8 +34,13 @@ namespace GameLogic.Navigation{
 
 		public int GetPathNodeIndex(Vector3 pos)
 		{
-			int result = 0;
-			return result;
+			int index = GetCellIndex(pos);
+
+			if(!IsInBounds(index)){
+				index = NNode.kInvalidIndex;
+			}
+
+			return index;
 		}
 
 		public Vector3 GetPathNodePos(int index)
@@ -35,7 +51,6 @@ namespace GameLogic.Navigation{
 			nodePos.y = GetTerrainHeight(nodePos);
 			return nodePos;
 		}
-		
 
 		public void ComputePortalsForPathSmoothing(Vector3[] roughPath, out Vector3[] aPortalLeftEndPts, out Vector3[] aPortalRightEndPts)
 		{

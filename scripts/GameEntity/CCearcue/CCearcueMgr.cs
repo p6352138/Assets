@@ -14,6 +14,8 @@ namespace GameEntity{
 		#region public function
 
 		public GameObject testTerrian;
+		public GameObject testPlayer;
+
 		public void setTerrian(GameObject ob)
 		{
 			testTerrian = ob;
@@ -25,6 +27,7 @@ namespace GameEntity{
 			GameObject go = testTerrian;
 
 			if(type == CCearcueType.Player){
+				m_curPlayer = new CPlayer(id,testPlayer);
 			}
 			else if(type == CCearcueType.Terrian){
 				m_curTerrian = new CTerrian(id,go);
