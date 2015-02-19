@@ -1,28 +1,17 @@
 ﻿using UnityEngine;
 using System.Collections;
+using GameLogic.AI;
 
 namespace GameEntity{
-	public class CCearcue  {
-
-		private int ID;
-		private GameObject Go;
-
-		public int id {
-			set {ID = value;}
-			get {return ID;}
-		}
-
-		public GameObject go{
-			set {Go = value;}
-			get {return Go;}
-		}
-
-		public CCearcue(){
-		}
-
-		public CCearcue(int id,GameObject ob){
-			this.id = id;
-			this.go = ob;
-		}
+	public interface CCreature {
+		void Think();
+		void Update(float deltaTime);
+		void OnMessage(EventMessageBase message);
+		//EnitityType GetEnitityType();
+		AIState  GetEnitityAiState();
+		void Release();
+		GameObject GetRenderObject();
+		void Play(string name,WrapMode mode);
+		int  GetId();
 	}
 }

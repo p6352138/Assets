@@ -3,7 +3,7 @@ using System.Collections;
 using GameLogic.AI;
 
 namespace GameEntity{
-	public class CPlayer : CCearcue {
+	public class CPlayer : CCreature {
 
 		#region private Fields
 		private int m_id;
@@ -20,6 +20,8 @@ namespace GameEntity{
 			m_go = go;
 		}
 
+
+		#region interface function
 		/// <summary>
 		/// Update the specified deltaTime.
 		/// </summary>
@@ -100,11 +102,28 @@ namespace GameEntity{
 		/// Gets the render object.
 		/// </summary>
 		/// <returns>
-		/// 
 		/// The render object.
 		/// </returns>
-		//public GameObject GetRenderObject(){
-		//	return renderObject ;
-		//}
+		public GameObject GetRenderObject(){
+			return m_go ;
+		}
+
+		public void Think()
+		{
+			;
+		}
+
+		//play animation state
+		public void Play(string name,WrapMode mode)
+		{
+
+		}
+
+		public int GetId()
+		{
+			return m_id;
+		}
+
+		#endregion
 	}
 }
