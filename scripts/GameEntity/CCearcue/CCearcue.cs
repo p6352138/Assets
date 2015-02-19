@@ -7,7 +7,7 @@ namespace GameEntity{
 		void Think();
 		void Update(float deltaTime);
 		void OnMessage(EventMessageBase message);
-		//EnitityType GetEnitityType();
+		EnitityType GetEnitityType();
 		AIState  GetEnitityAiState();
 		void Release();
 		GameObject GetRenderObject();

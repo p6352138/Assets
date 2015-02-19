@@ -154,9 +154,15 @@ namespace GameEntity{
 			
 		}
 		
-		public int GetId()
+		public int GetId()                   
 		{
 			return m_id;
+		}
+
+		
+		public EnitityType GetEnitityType()
+		{
+			return EnitityType.ENTITY_TERRIAN;
 		}
 		
 		#endregion

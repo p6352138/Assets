@@ -8,6 +8,7 @@ namespace GameEntity{
 		#region private Fields
 		private int m_id;
 		private GameObject m_go;
+		private Animation m_animation;
 		#endregion
 
 		#region public Fields
@@ -18,6 +19,15 @@ namespace GameEntity{
 		{
 			m_id = id;
 			m_go = go;
+
+			m_animation = m_go.GetComponent<Animation> ();
+			if (m_animation == null) {
+				Debug.LogError("the animation component is null!");
+			}
+
+			m_stateMachine = new StateMachine<CPlayer> (this);
+
+			m_stateMachine.SetState (PlayerWalkState.GetInstance());
 		}
 
 
@@ -60,16 +70,6 @@ namespace GameEntity{
 			m_stateMachine.OnMessage(message);
 		}
 
-		/// <summary>
-		/// Gets the type of the enitity.
-		/// </summary>
-		/// <returns>
-		/// The enitity type.
-		/// </returns>
-		//public EnitityType GetEnitityType(){
-		//	return EnitityType.ENITITY_TYPE_CHARACTER ;
-		//}
-		
 		/// <summary>
 		/// Gets the state of the enitity ai.
 		/// </summary>
@@ -116,14 +116,41 @@ namespace GameEntity{
 		//play animation state
 		public void Play(string name,WrapMode mode)
 		{
-
+			m_animation.wrapMode = mode;
+			m_animation.Play (name);
 		}
 
+		public void Play(PlayerPlayAnimation type,WrapMode mode)
+		{
+			string name = "";
+			m_animation.wrapMode = mode;
+
+			if (type == PlayerPlayAnimation.IDEL) {
+				name = "idle";
+			}
+			else if (type == PlayerPlayAnimation.JUMP) {
+				name = "jump_pose";
+			}
+			else if (type == PlayerPlayAnimation.RUN) {
+				name = "run";
+			}
+			else if (type == PlayerPlayAnimation.WALK) {
+				name = "walk";
+			}
+
+			m_animation.Play (name);
+		}
+		
 		public int GetId()
 		{
 			return m_id;
 		}
 
+		
+		public EnitityType GetEnitityType()
+		{
+			return EnitityType.ENTITY_PLAYER;
+		}
 		#endregion
 	}
 }

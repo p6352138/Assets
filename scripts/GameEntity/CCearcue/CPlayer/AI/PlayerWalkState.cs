@@ -14,12 +14,15 @@ namespace GameLogic.AI{
 
 		public void Enter(CPlayer type)
 		{
-			//type.id = 1;
+			type.Play (PlayerPlayAnimation.WALK, WrapMode.Loop);
 		}
 
 		public void Execute(CPlayer type, float time)
 		{
-			;
+			//Vector3 speed = new Vector3 (CPlayerCommon.Player_Speed * type.GetRenderObject ().transform.eulerAngles.x, 
+			//                             CPlayerCommon.Player_Speed * type.GetRenderObject ().transform.eulerAngles.z,
+			//                             CPlayerCommon.Player_Speed * type.GetRenderObject ().transform.eulerAngles.y);
+			type.GetRenderObject ().transform.Translate (Vector3.forward * CPlayerCommon.Player_Speed*time);
 		}
 
 		public void Exit(CPlayer type)

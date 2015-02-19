@@ -9,6 +9,7 @@ public class SceneMgr : MonoBehaviour {
 	#region public Properties
 	public bool isDebug;
 	public GameObject Terrian;
+	public GameObject Player;
 	#endregion
 
 	#region private Properties
@@ -21,11 +22,14 @@ public class SceneMgr : MonoBehaviour {
 
 		//NetSessionMgr.GetInstance().Init();
 		NavigationMgr.GetInstance().init();
+		CCearcueMgr.GetInstance ().Init();
 
 		if(m_curSceneId == GameDefine.FightSceneID){
 			CCearcueMgr.GetInstance().setTerrian(Terrian);
 			CCearcueMgr.GetInstance().CreateCearcue(1,CCearcueType.Terrian);
-
+			
+			CCearcueMgr.GetInstance().setPlayer(Player);
+			CCearcueMgr.GetInstance().CreateCearcue(1,CCearcueType.Player);
 		}
 	}
 	
@@ -35,5 +39,7 @@ public class SceneMgr : MonoBehaviour {
 			NavigationMgr.GetInstance().showGrid();
 			NavigationMgr.GetInstance().showObstacleGrid();
 		}
+
+		CCearcueMgr.GetInstance ().Update (Time.deltaTime);
 	}
 }
