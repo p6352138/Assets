@@ -12,6 +12,6 @@ namespace GameEntity{
 
 	public static class CPlayerCommon
 	{
-		public static readonly float Player_Speed = 1.0f;
+		public static readonly float Player_Speed = 2.0f;
 	}
 }

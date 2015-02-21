@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System;
 
 namespace GameLogic.Navigation{
 	/// <summary>
@@ -71,6 +72,87 @@ namespace GameLogic.Navigation{
 		/// A <see cref="System.Boolean"/>
 		/// </returns>
 		bool HasFailed();
+	}
 
+	public class NPathRequest : IComparable<NPathRequest>,NIPathRequestQuery
+	{
+		#region private Fields
+		/// <summary>
+		/// 优先级
+		/// </summary>
+		/// <value>The priority.</value>
+		private int m_priority;
+
+		private NPool<NPathPlanner>.NNode m_pathPlanner;
+		#endregion
+
+		#region public Fields
+		/// <summary>
+		/// 优先级
+		/// </summary>
+		/// <value>The priority.</value>
+		public int Priority
+		{
+			get{return m_priority;}
+		}
+		#endregion
+
+		#region IComparable<Request> Members
+		public int CompareTo(NPathRequest other)
+		{
+			if (m_priority > other.Priority)
+			{
+				return -1;
+			}
+			else if (m_priority < other.Priority)
+			{
+				return 1;
+			}
+			else
+			{
+				return 0;
+			}
+		}
+		#endregion
+
+		#region Interface function
+
+		public LinkedList<NNode> GetSolutionPath()
+		{
+
+		}
+		
+
+		public Vector3[] GetSolutionPath(NIPathTerrain world)
+		{
+		}
+		
+
+		public Vector3 GetStartPos()
+		{
+		}
+		
+
+		public Vector3 GetGoalPos()
+		{
+		}
+
+		public NIPathAgent GetPathAgent()
+		{
+		}
+
+		public bool HasCompleted()
+		{
+		}
+
+		public bool HasSuccessfullyCompleted()
+		{
+		}
+
+		public bool HasFailed()
+		{
+
+		}
+		#endregion
 	}
 }
