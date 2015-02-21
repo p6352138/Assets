@@ -14,7 +14,7 @@ namespace GameLogic.Navigation{
 		#region Fields
 		protected ePlanStatus 		m_planStatus;
 		protected int 				m_maxNumberOfNodes;
-		private NIPlanningWorld 		m_world;
+		private NIPlanningWorld 	m_world;
 		#endregion
 	}
 }

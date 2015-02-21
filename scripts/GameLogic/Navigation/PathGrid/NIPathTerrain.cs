@@ -4,9 +4,76 @@ using System.Collections;
 namespace GameLogic.Navigation{
 
 	/// <summary>
+	///Defines the interface to the planning world. If you want to define your own terrain (ex: a nav mesh), then you need
+	///to inherit from this interface.
+	/// </summary>
+	public interface NIPlanningWorld 
+	{
+		/// <summary>
+		///Get the neighbors of a node
+		/// </summary>
+		/// <param name="index">
+		///Node index
+		/// </param>
+		/// <param name="neighbors">
+		///Returns the neighbors of the node
+		/// </param>
+		/// <returns>
+		///Number of neighbors this node has
+		/// </returns>
+		int GetNeighbors(int index, ref int[] neighbors);
+		
+		/// <summary>
+		///Get the total number of nodes in the planning world
+		/// </summary>
+		/// <returns>
+		/// A <see cref="System.Int32"/>
+		/// </returns>
+		int GetNumNodes();
+		
+		/// <summary>
+		///Get the heuristic cost to traverse from one node to another
+		/// </summary>
+		/// <param name="startNodeIndex">
+		///Index of the start node
+		/// </param>
+		/// <param name="destNodeIndex">
+		///Index of the goal node
+		/// </param>
+		/// <returns>
+		///The cost to travel between these two nodes
+		/// </returns>
+		float GetHCost(int startNodeIndex, int destNodeIndex);
+		
+		/// <summary>
+		///Get the actual cost to traverse from one node to another
+		/// </summary>
+		/// <param name="startNodeIndex">
+		///Index of the start node
+		/// </param>
+		/// <param name="destNodeIndex">
+		///Index of the goal node
+		/// </param>
+		/// <returns>
+		///The cost to travel between these two nodes
+		/// </returns>
+		float GetGCost(int startNodeIndex, int destNodeIndex);
+		
+		/// <summary>
+		///Determine if a node is blocked / disabled (ex: an obstacle is placed on top of a grid cell, which will disable the node representing that cell)
+		/// </summary>
+		/// <param name="index">
+		///Node index
+		/// </param>
+		/// <returns>
+		///True if the node is blocked, and false otherwise
+		/// </returns>
+		bool IsNodeBlocked(int index);
+	}
+	/// <summary>
 	///Defines the interface to the path planning world
 	/// </summary>
-	public interface NIPathTerrain {
+	public interface NIPathTerrain : NIPlanningWorld {
 		/// <summary>
 		///Get the node closest to a position (assuming the position is inside the terrain)
 		/// </summary>
