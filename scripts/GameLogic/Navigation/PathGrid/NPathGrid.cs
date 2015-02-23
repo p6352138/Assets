@@ -205,4 +205,68 @@ namespace GameLogic.Navigation{
 		}
 		#endregion
 	}
+
+	/// <summary>
+	/// Given a list of points, this class computes portals on a grid terrain. Portals are used for path smoothing. 
+	/// </summary>
+	public static class GridPortalComputer
+	{
+		public static void ComputePortals(Vector3[] roughPath, NPathGrid grid, out Vector3[] aLeftEndPts, out Vector3[] aRightEndPts)
+		{
+			aLeftEndPts = null;
+			aRightEndPts = null;
+			
+			if ( roughPath.Length < 2 )
+			{
+				return;
+			}
+			
+			aLeftEndPts = new Vector3[roughPath.Length-1];
+			aRightEndPts = new Vector3[roughPath.Length-1];
+			
+			for ( int i = 0; i < roughPath.Length - 1; i++ )
+			{
+				Vector3 currentPos = roughPath[i];
+				Vector3 nextPos = roughPath[i+1];
+				Vector3 leftPoint, rightPoint;
+				ComputePortal(currentPos, nextPos, grid, out leftPoint, out rightPoint);
+				aLeftEndPts[i] = leftPoint;
+				aRightEndPts[i] = rightPoint;
+			}
+		}
+		
+		private static void ComputePortal(Vector3 startPos, Vector3 endPos, NPathGrid grid, out Vector3 leftPoint, out Vector3 rightPoint)
+		{
+			leftPoint = Vector3.zero;
+			rightPoint = Vector3.zero;
+			
+			int startCellIndex = grid.GetCellIndex(startPos);
+			int endCellIndex = grid.GetCellIndex(endPos);
+			
+			Bounds startCellBounds = grid.GetCellBounds(startCellIndex);
+			NPathGrid.eNeighborDirection neighborDirection = grid.GetNeighborDirection(startCellIndex, endCellIndex);
+			switch (neighborDirection)
+			{
+			case NPathGrid.eNeighborDirection.kTop:
+				leftPoint = new Vector3(startCellBounds.min.x, grid.Origin.y, startCellBounds.max.z);
+				rightPoint = new Vector3(startCellBounds.max.x, grid.Origin.y, startCellBounds.max.z);
+				break;
+			case NPathGrid.eNeighborDirection.kRight:
+				leftPoint = new Vector3(startCellBounds.max.x, grid.Origin.y, startCellBounds.max.z);
+				rightPoint = new Vector3(startCellBounds.max.x, grid.Origin.y, startCellBounds.min.z);
+				break;
+			case NPathGrid.eNeighborDirection.kBottom:
+				leftPoint = new Vector3(startCellBounds.max.x, grid.Origin.y, startCellBounds.min.z);
+				rightPoint = new Vector3(startCellBounds.min.x, grid.Origin.y, startCellBounds.min.z);
+				break;
+			case NPathGrid.eNeighborDirection.kLeft:
+				leftPoint = new Vector3(startCellBounds.min.x, grid.Origin.y, startCellBounds.min.z);
+				rightPoint = new Vector3(startCellBounds.min.x, grid.Origin.y, startCellBounds.max.z);
+				break;
+			default:
+				UnityEngine.Debug.LogError("ComputePortal failed to find a neighbor");
+				break;
+			};
+		}
+	};
 }
