@@ -18,12 +18,12 @@ namespace GameLogic.Navigation{
 		#endregion
 
 		#region Properties
-		public static float Width
+		public float Width
 		{
 			get{return m_Rows*m_cellSize;}
 		}
 
-		public static float Height
+		public float Height
 		{
 			get{return m_Columns*m_cellSize;}
 		}
@@ -33,7 +33,7 @@ namespace GameLogic.Navigation{
 			get { return m_Rows * m_Columns; }
 		}
 
-		public static Vector3 Origin
+		public Vector3 Origin
 		{
 			get{return m_origin;}
 		}
@@ -71,7 +71,18 @@ namespace GameLogic.Navigation{
 			m_cellSize = GameDefine.CellSize;
 		}
 
-		public static void DebugDraw(Vector3 origin)
+		// Update is called once per frame
+		public virtual void Update () 
+		{
+			;
+		}
+		
+		public virtual void OnDrawGizmos()
+		{
+			;
+		}
+
+		public void DebugDraw(Vector3 origin)
 		{
 			m_origin = origin;
 			Vector3 startPos,endPos;
@@ -87,6 +98,29 @@ namespace GameLogic.Navigation{
 				endPos = startPos + XAxis * Height;
 				Debug.DrawLine(startPos,endPos);
 			}
+		}
+
+		/// <summary>
+		/// 获取当前位置位于哪一个网格
+		/// </summary>
+		/// <returns>The nearest cell center.</returns>
+		/// <param name="pos">Position.</param>
+		public Vector3 GetNearestCellCenter(Vector3 pos)
+		{
+			int index = GetCellIndex(pos);
+			Vector3 cellPos = GetCellPosition( index );
+			cellPos.x += ( m_cellSize / 2.0f );
+			cellPos.z += ( m_cellSize / 2.0f );
+			return cellPos;
+		}
+
+		// 获得某一个网格的中心点位置
+		public Vector3 GetCellCenter(int index)
+		{
+			Vector3 cellPosition = GetCellPosition(index);	
+			cellPosition.x += ( m_cellSize / 2.0f );
+			cellPosition.z += ( m_cellSize / 2.0f );
+			return cellPosition;
 		}
 
 		// pass in world space coords. Get the tile index at the passed position
@@ -121,6 +155,37 @@ namespace GameLogic.Navigation{
 			return cellPosition;
 		}
 
+		// pass in world space coords. Get the tile index at the passed position, clamped to be within the grid.
+		public int GetCellIndexClamped(Vector3 pos)
+		{
+			pos -= Origin;
+			
+			int col = (int)(pos.x / m_cellSize);
+			int row = (int)(pos.z / m_cellSize);
+			
+			//make sure the position is in range.
+			col = (int)Mathf.Clamp(col, 0, m_Columns - 1);
+			row = (int)Mathf.Clamp(row, 0, m_Rows - 1);
+			
+			return (row * m_Columns + col);
+		}
+		
+		public Bounds GetCellBounds(int index)
+		{
+			Vector3 cellCenterPos = GetCellPosition(index);
+			cellCenterPos.x += ( m_cellSize / 2.0f );
+			cellCenterPos.z += ( m_cellSize / 2.0f );
+			Bounds cellBounds = new Bounds(cellCenterPos, new Vector3(m_cellSize, Depth, m_cellSize));
+			return cellBounds;
+		}
+		
+		public Bounds GetGridBounds()
+		{
+			Vector3 gridCenter = Origin + (Width / 2.0f) * XAxis + (Height / 2.0f) * ZAxis;
+			Bounds gridBounds = new Bounds(gridCenter, new Vector3(Width, Depth, Height));
+			return gridBounds;
+		}
+		
 		public int GetRow(int index)
 		{
 			int row = index / m_Columns;

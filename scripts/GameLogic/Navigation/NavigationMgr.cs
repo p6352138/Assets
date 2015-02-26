@@ -24,7 +24,7 @@ namespace GameLogic.Navigation{
 
 		#region showDebug
 		public void showGrid(){
-			NGrid.DebugDraw(CCearcueMgr.GetInstance().GetTerrainPosition());
+			m_grid.DebugDraw(CCearcueMgr.GetInstance().GetTerrainPosition());
 		}
 
 		public void showObstacleGrid(){

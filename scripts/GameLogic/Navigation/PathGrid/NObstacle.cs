@@ -19,6 +19,11 @@ namespace GameLogic.Navigation{
 		private Vector3 vertDir;
 		private float horizLength;
 		private float vertLength;
+
+		private NPathGrid m_NGrid
+		{
+			get{return NavigationMgr.GetInstance().GetGrid();}
+		}
 		#endregion
 
 		#region public function
@@ -32,10 +37,10 @@ namespace GameLogic.Navigation{
 		public void Draw()
 		{
 			//calculation Obstacle bounds position in world coordtion
-			Vector3 upperLeftPos = new Vector3(m_bounds.min.x,NGrid.Origin.y,m_bounds.max.z);
-			Vector3 upperRightPos = new Vector3(m_bounds.max.x,NGrid.Origin.y,m_bounds.max.z);
-			Vector3 lowerLeftPos = new Vector3(m_bounds.min.x,NGrid.Origin.y,m_bounds.min.z);
-			Vector3 lowerRightPos = new Vector3(m_bounds.max.x,NGrid.Origin.y,m_bounds.min.z);
+			Vector3 upperLeftPos = new Vector3(m_bounds.min.x,m_NGrid.Origin.y,m_bounds.max.z);
+			Vector3 upperRightPos = new Vector3(m_bounds.max.x,m_NGrid.Origin.y,m_bounds.max.z);
+			Vector3 lowerLeftPos = new Vector3(m_bounds.min.x,m_NGrid.Origin.y,m_bounds.min.z);
+			Vector3 lowerRightPos = new Vector3(m_bounds.max.x,m_NGrid.Origin.y,m_bounds.min.z);
 			
 			Vector3 horizDir = (upperRightPos - upperLeftPos).normalized;
 			Vector3 vertDir = (upperLeftPos - lowerLeftPos).normalized;
@@ -92,10 +97,10 @@ namespace GameLogic.Navigation{
 		//compute the max num of obstruct cells on object's collider
 		private void UpdateObstructedCellsPool(){
 			//save bounds's position data in coordtion
-			upperLeftPos = new Vector3(m_bounds.min.x,NGrid.Origin.y,m_bounds.max.z);
-			upperRightPos = new Vector3(m_bounds.max.x,NGrid.Origin.y,m_bounds.max.z);
-			lowerLeftPos = new Vector3(m_bounds.min.x,NGrid.Origin.y,m_bounds.min.z);
-			lowerRightPos = new Vector3(m_bounds.max.x,NGrid.Origin.y,m_bounds.min.z);
+			upperLeftPos = new Vector3(m_bounds.min.x,m_NGrid.Origin.y,m_bounds.max.z);
+			upperRightPos = new Vector3(m_bounds.max.x,m_NGrid.Origin.y,m_bounds.max.z);
+			lowerLeftPos = new Vector3(m_bounds.min.x,m_NGrid.Origin.y,m_bounds.min.z);
+			lowerRightPos = new Vector3(m_bounds.max.x,m_NGrid.Origin.y,m_bounds.min.z);
 			
 			horizDir = (upperRightPos - upperLeftPos).normalized;
 			vertDir = (upperLeftPos - lowerLeftPos).normalized;
