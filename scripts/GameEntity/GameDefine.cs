@@ -9,9 +9,9 @@ namespace GameEntity{
 		#endregion
 
 		#region pathGridConfig
-		public static readonly int 			NumberOfRows = 200;
-		public static readonly int 			NumberOfColumns = 200;
-		public static readonly float 		CellSize = 1;
+		public static readonly int 			NumberOfRows = 100;
+		public static readonly int 			NumberOfColumns = 100;
+		public static readonly float 		CellSize = 0.5f;
 		#endregion
 	}
 }

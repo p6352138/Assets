@@ -23,8 +23,8 @@ namespace GameLogic.Navigation{
 		#endregion
 
 		#region showDebug
-		public void showGrid(){
-			m_grid.DebugDraw(CCearcueMgr.GetInstance().GetTerrainPosition());
+		public void showGrid(Vector3 postion){
+			m_grid.DebugDraw(postion);
 		}
 
 		public void showObstacleGrid(){
@@ -32,8 +32,13 @@ namespace GameLogic.Navigation{
 		}
 		#endregion
 
+		#region public function
 		public NPathGrid GetGrid(){
 			return m_grid;
 		}
+
+		public void ImportMapData(){
+		}
+		#endregion
 	}
 }

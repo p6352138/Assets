@@ -10,6 +10,7 @@ public class SceneMgr : MonoBehaviour {
 	public bool isDebug;
 	public GameObject Terrian;
 	public GameObject Player;
+	public Vector3 MapOrigin;
 	#endregion
 
 	#region private Properties
@@ -36,7 +37,7 @@ public class SceneMgr : MonoBehaviour {
 	// Update is called once per frame
 	void Update () { 
 		if(isDebug){
-			NavigationMgr.GetInstance().showGrid();
+			NavigationMgr.GetInstance().showGrid(MapOrigin);
 			NavigationMgr.GetInstance().showObstacleGrid();
 		}
 

@@ -21,6 +21,8 @@ namespace GameLogic.Navigation{
 
 		#region public function
 		public void InitObstacleData(List<Bounds> bounds){
+			base.Awake();
+
 			m_obstacleGrid = new NObstacleGrid();
 			m_obstacleGrid.Init(bounds);
 		}
