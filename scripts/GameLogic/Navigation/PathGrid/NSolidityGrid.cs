@@ -10,6 +10,10 @@ namespace GameLogic.Navigation{
 		private bool[,] m_solidList;
 		#endregion
 
+		#region Properties
+		public bool[,] SolidList{get{return m_solidList;}}
+		#endregion
+
 		public NSolidityGrid()
 		{
 		}

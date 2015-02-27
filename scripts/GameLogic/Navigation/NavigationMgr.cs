@@ -3,6 +3,8 @@ using System.Collections;
 using GameEntity;
 using AppUtility;
 using System.Collections.Generic;
+using System.IO;
+using System.Text;
 
 namespace GameLogic.Navigation{ 
 	class NavigationMgr : Singleton<NavigationMgr> {
@@ -38,6 +40,37 @@ namespace GameLogic.Navigation{
 		}
 
 		public void ImportMapData(){
+			string txt = "";
+			for(int i=0;i<GameDefine.NumberOfColumns;i++)
+			{
+				for(int j=0;j<GameDefine.NumberOfRows;j++)
+				{
+					int result = 0;
+					if(m_grid.SolidList[i,j]){
+						result = 1;
+					}
+					else{
+						result = 0;
+					}
+
+					if(j == GameDefine.NumberOfRows - 1){
+
+						txt += result.ToString()+"\n";
+					}
+					else{
+						txt += result.ToString()+",";
+					}
+				}
+			}
+
+			if (!File.Exists (Application.dataPath + "/MapData.txt")) {
+				FileStream fs = File.Create (Application.dataPath + "/MapData.txt");
+			}
+
+			StreamWriter sw = new StreamWriter (Application.dataPath + "/MapData.txt");
+			sw.Write(txt);
+			sw.Flush();
+			sw.Close();
 		}
 		#endregion
 	}

@@ -7,6 +7,7 @@ using NetWork.NetSession;
 public class SceneMgr : MonoBehaviour {
 
 	#region public Properties
+	public bool isOutPutMap;
 	public bool isDebug;
 	public GameObject Terrian;
 	public GameObject Player;
@@ -32,6 +33,9 @@ public class SceneMgr : MonoBehaviour {
 			CCearcueMgr.GetInstance().setPlayer(Player);
 			CCearcueMgr.GetInstance().CreateCearcue(1,CCearcueType.Player);
 		}
+
+		if (isOutPutMap)
+			NavigationMgr.GetInstance ().ImportMapData ();
 	}
 	
 	// Update is called once per frame
