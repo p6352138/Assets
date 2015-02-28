@@ -23,7 +23,7 @@ public class SceneMgr : MonoBehaviour {
 		m_curSceneId = 1;
 
 		//NetSessionMgr.GetInstance().Init();
-		NavigationMgr.GetInstance().init();
+		NavigationMgr.GetInstance().init(MapOrigin);
 		CCearcueMgr.GetInstance ().Init();
 
 		if(m_curSceneId == GameDefine.FightSceneID){
@@ -34,17 +34,22 @@ public class SceneMgr : MonoBehaviour {
 			CCearcueMgr.GetInstance().CreateCearcue(1,CCearcueType.Player);
 		}
 
-		if (isOutPutMap)
-			NavigationMgr.GetInstance ().ImportMapData ();
+        if (isOutPutMap)
+            NavigationMgr.GetInstance().ImportMapData();
 	}
 	
 	// Update is called once per frame
 	void Update () { 
 		if(isDebug){
-			NavigationMgr.GetInstance().showGrid(MapOrigin);
+			NavigationMgr.GetInstance().showGrid();
 			NavigationMgr.GetInstance().showObstacleGrid();
 		}
 
 		CCearcueMgr.GetInstance ().Update (Time.deltaTime);
 	}
+
+    void OnGUI()
+    {
+       
+    }
 }

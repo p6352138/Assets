@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using GameEntity;
 
 namespace GameLogic.Navigation{
 	public class NPathGrid : NSolidityGrid,NIPathTerrain {
@@ -20,12 +21,26 @@ namespace GameLogic.Navigation{
 		#endregion
 
 		#region public function
-		public void InitObstacleData(List<Bounds> bounds){
-			base.Awake();
-
+        public void InitObstacleData(List<Bounds> bounds)
+        {
 			m_obstacleGrid = new NObstacleGrid();
 			m_obstacleGrid.Init(bounds);
 		}
+
+        public void InitSolidityData()
+        {
+            //初始化SolidityGrid数据
+            for (int i = 0; i < m_obstacleGrid.Obstaclelist.Count; i++)
+            {
+                int cellsize;
+                int[] cells = m_obstacleGrid.Obstaclelist[i].GetObstructedCells(out cellsize);
+
+                for (int j = 0; j < cellsize;j++ )
+                {
+                    SetSolidityObstacleCell(cells[j]);
+                }
+            }
+        }
 
 		public void DrawObstacle(){
 			m_obstacleGrid.DebugShowObstacleGrid();
@@ -159,8 +174,23 @@ namespace GameLogic.Navigation{
 		}
 		#endregion
 
-		#region public function
-		public eNeighborDirection GetNeighborDirection(int index, int neighborIndex)
+        #region private function
+        private void SetSolidityObstacleCell(int index)
+        {
+            if(index <= 0)
+            {
+                Debug.LogError("the index is faild data!");
+                return;
+            }
+
+            int col = index / GameDefine.NumberOfColumns;
+            int row = index % GameDefine.NumberOfRows;
+
+            SolidList[col, row] = true;
+        }
+        #endregion
+        #region public function
+        public eNeighborDirection GetNeighborDirection(int index, int neighborIndex)
 		{
 			for (int i = 0; i < (int)eNeighborDirection.kNumNeighbors; i++)
 			{

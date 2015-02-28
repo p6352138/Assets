@@ -14,19 +14,20 @@ namespace GameLogic.Navigation{
 		#endregion
 
 		#region Init data
-		public void init(){
+		public void init(Vector3 origin){
 			m_grid = new NPathGrid();
+            m_grid.Awake(origin);
 		}
 
-		public void InitPathData(List<Bounds> bounds)
+        public void InitPathData(List<Bounds> bounds)
 		{
 			m_grid.InitObstacleData(bounds);
 		}
 		#endregion
 
 		#region showDebug
-		public void showGrid(Vector3 postion){
-			m_grid.DebugDraw(postion);
+		public void showGrid(){
+			m_grid.DebugDraw();
 		}
 
 		public void showObstacleGrid(){
@@ -40,6 +41,8 @@ namespace GameLogic.Navigation{
 		}
 
 		public void ImportMapData(){
+            m_grid.InitSolidityData();
+
 			string txt = "";
 			for(int i=0;i<GameDefine.NumberOfColumns;i++)
 			{
@@ -71,6 +74,8 @@ namespace GameLogic.Navigation{
 			sw.Write(txt);
 			sw.Flush();
 			sw.Close();
+
+            Debug.LogWarning("map sucess!!!~~~~~~~");
 		}
 		#endregion
 	}

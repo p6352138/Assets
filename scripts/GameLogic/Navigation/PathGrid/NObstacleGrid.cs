@@ -10,8 +10,15 @@ namespace GameLogic.Navigation{
 		private List<NObstacle> m_Obstaclelist;
 		#endregion
 
-		#region public function
-		public void Init(List<Bounds> boundslist)
+        #region public Properties
+        public List<NObstacle> Obstaclelist
+        {
+            get{return m_Obstaclelist;}
+        }
+        #endregion
+
+        #region public function
+        public void Init(List<Bounds> boundslist)
 		{
 			m_boundslist = boundslist;
 			m_Obstaclelist = new List<NObstacle>();

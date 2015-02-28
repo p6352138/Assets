@@ -18,9 +18,9 @@ namespace GameLogic.Navigation{
 		{
 		}
 
-		public override void Awake ()
+		public override void Awake (Vector3 origin)
 		{
-			base.Awake ();
+            base.Awake(origin);
 			m_solidList = new bool[GameDefine.NumberOfColumns,GameDefine.NumberOfRows];
 
 			for (int i =0; i<GameDefine.NumberOfColumns; i++) {

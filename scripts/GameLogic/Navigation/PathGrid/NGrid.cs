@@ -65,7 +65,8 @@ namespace GameLogic.Navigation{
 			Depth = 1.0f;
 		}
 
-		public virtual void Awake(){
+		public virtual void Awake(Vector3 origin){
+            m_origin = origin;
 			m_Rows = GameDefine.NumberOfRows;
 			m_Columns = GameDefine.NumberOfColumns;
 			m_cellSize = GameDefine.CellSize;
@@ -82,9 +83,8 @@ namespace GameLogic.Navigation{
 			;
 		}
 
-		public void DebugDraw(Vector3 origin)
+		public void DebugDraw()
 		{
-			m_origin = origin;
 			Vector3 startPos,endPos;
 
 			for(int i=0;i<m_Rows+1;i++){
