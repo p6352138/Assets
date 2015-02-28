@@ -1,0 +1,140 @@
+fileFormatVersion: 2
+guid: 8103c6ede7816a44b824d981c4807f21
+ModelImporter:
+  serializedVersion: 16
+  fileIDToRecycleName:
+    100000: CATRig2______001
+    100002: CATRig2______001______001
+    100004: CATRig2______001______001______001
+    100006: CATRig2______001______001______001______001
+    100008: CATRig2______002
+    100010: CATRig2______002______001
+    100012: CATRig2______002______001______001
+    100014: CATRig2______002______001______002
+    100016: CATRigHub002
+    100018: CATRigHub003
+    100020: CATRigHub003______001
+    100022: CATRigL___1
+    100024: CATRigL___1 1
+    100026: CATRigL___1 2
+    100028: CATRigL___2
+    100030: CATRigL___2 1
+    100032: CATRigL___2 2
+    100034: CATRigL_________
+    100036: CATRigL_________ 1
+    100038: CATRigL_________ 2
+    100040: CATRigL___Ankle
+    100042: CATRigL___Ankle 1
+    100044: CATRigR___1
+    100046: CATRigR___1 1
+    100048: CATRigR___1 2
+    100050: CATRigR___2
+    100052: CATRigR___2 1
+    100054: CATRigR___2 2
+    100056: CATRigR_________
+    100058: CATRigR_________ 1
+    100060: CATRigR_________ 2
+    100062: CATRigR___Ankle
+    100064: CATRigR___Ankle 1
+    100066: CATRigSpine2
+    100068: CATRigSpineCATRigSpine1
+    100070: Character001
+    100072: //RootNode
+    100074: Object05
+    400000: CATRig2______001
+    400002: CATRig2______001______001
+    400004: CATRig2______001______001______001
+    400006: CATRig2______001______001______001______001
+    400008: CATRig2______002
+    400010: CATRig2______002______001
+    400012: CATRig2______002______001______001
+    400014: CATRig2______002______001______002
+    400016: CATRigHub002
+    400018: CATRigHub003
+    400020: CATRigHub003______001
+    400022: CATRigL___1
+    400024: CATRigL___1 1
+    400026: CATRigL___1 2
+    400028: CATRigL___2
+    400030: CATRigL___2 1
+    400032: CATRigL___2 2
+    400034: CATRigL_________
+    400036: CATRigL_________ 1
+    400038: CATRigL_________ 2
+    400040: CATRigL___Ankle
+    400042: CATRigL___Ankle 1
+    400044: CATRigR___1
+    400046: CATRigR___1 1
+    400048: CATRigR___1 2
+    400050: CATRigR___2
+    400052: CATRigR___2 1
+    400054: CATRigR___2 2
+    400056: CATRigR_________
+    400058: CATRigR_________ 1
+    400060: CATRigR_________ 2
+    400062: CATRigR___Ankle
+    400064: CATRigR___Ankle 1
+    400066: CATRigSpine2
+    400068: CATRigSpineCATRigSpine1
+    400070: Character001
+    400072: //RootNode
+    400074: Object05
+    4300000: Object05
+    7400000: Take 001
+    9500000: //RootNode
+    11100000: //RootNode
+    13700000: Object05
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: .00999999978
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 1
+  additionalBone: 0
+  userData: 
