@@ -27,7 +27,7 @@ namespace GameEntity{
 
 			m_stateMachine = new StateMachine<CPlayer> (this);
 
-			m_stateMachine.SetState (PlayerWalkState.GetInstance());
+			m_stateMachine.SetState (PlayerIdelState.GetInstance());
 		}
 
 
