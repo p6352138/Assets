@@ -5,6 +5,7 @@ namespace GameEntity{
 	public enum EnitityType
 	{
 		ENTITY_PLAYER,
-		ENTITY_TERRIAN,
+        ENTITY_TERRIAN,
+        ENTITY_MONSTER,
 	}
 }

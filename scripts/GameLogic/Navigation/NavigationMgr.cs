@@ -67,7 +67,7 @@ namespace GameLogic.Navigation{
 			}
 
 			if (!File.Exists (Application.dataPath + "/MapData.txt")) {
-				FileStream fs = File.Create (Application.dataPath + "/MapData.txt");
+				File.Create (Application.dataPath + "/MapData.txt");
 			}
 
 			StreamWriter sw = new StreamWriter (Application.dataPath + "/MapData.txt");
