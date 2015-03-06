@@ -5,5 +5,6 @@ namespace GameEntity{
 	enum CCearcueType{
 		Terrian,
 		Player,
+        Monster,
 	}
 }

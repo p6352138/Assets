@@ -45,6 +45,15 @@ namespace GameLogic.Navigation{
 		public void DrawObstacle(){
 			m_obstacleGrid.DebugShowObstacleGrid();
 		}
+
+        public int GetDistance(int index1,int index2)
+        {
+            int result;
+            Vector2 point1 = new Vector2(GetRow(index1),GetColumn(index1));
+            Vector2 point2 = new Vector2(GetRow(index2),GetColumn(index2));
+            result = (int)Vector2.Distance(point1, point2);
+            return result;
+        }
 		#endregion
 
 		#region interface function

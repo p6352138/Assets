@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using GameLogic.AI;
+using GameLogic.Navigation;
 
 namespace GameEntity
 {
@@ -14,6 +15,16 @@ namespace GameEntity
 
         #region public Fields
         public StateMachine<CMonster> m_stateMachine;
+
+        public int ID { get { return m_id; } }
+
+        public int PositionInPathGrid
+        {
+            get
+            {
+                return NavigationMgr.GetInstance().GetGrid().GetPathNodeIndex(m_go.transform.localPosition);
+            }
+        }
         #endregion
 
         public CMonster(int id,GameObject go)
@@ -22,12 +33,15 @@ namespace GameEntity
             m_go = go;
             m_animation = go.GetComponent<Animation>();
 
+            m_stateMachine = new StateMachine<CMonster>(this);
+            m_stateMachine.SetState(MonsterIdelState.GetInstance());
         }
 
         public void Think()
         {
 
         }
+
         public void Update(float deltaTime)
         {
             if (m_stateMachine != null)
@@ -43,6 +57,11 @@ namespace GameEntity
         }
         public AIState GetEnitityAiState()
         {
+            if (m_stateMachine.GetState() == MonsterIdelState.GetInstance())
+            {
+                return AIState.AI_STATE_STAND;
+            }
+
             return AIState.AI_STATE_NULL;
         }
         public void Release()

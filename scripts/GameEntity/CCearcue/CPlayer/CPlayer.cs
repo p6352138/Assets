@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using GameLogic.AI;
+using GameLogic.Navigation;
 
 namespace GameEntity{
 	public class CPlayer : CCreature {
@@ -13,6 +14,14 @@ namespace GameEntity{
 
 		#region public Fields
 		public StateMachine<CPlayer> m_stateMachine;
+
+        public int PositionInPathGrid
+        {
+            get
+            {
+                return NavigationMgr.GetInstance().GetGrid().GetPathNodeIndex(m_go.transform.localPosition);
+            }
+        }
 		#endregion
 
 		public CPlayer(int id,GameObject go)

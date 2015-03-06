@@ -5,7 +5,8 @@ namespace GameLogic.AI{
 	public enum AIState{
 		AI_STATE_NULL,
 		AI_STATE_STAND,
-		AI_STATE_MOVE,
+        AI_STATE_MOVE,
+        AI_STATE_ATTACK,
 	}
 	
 	public enum BulletState{

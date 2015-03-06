@@ -5,10 +5,10 @@ using GameLogic.Navigation;
 
 namespace GameLogic.AI
 {
-    public class MonsterIdelState : CStateBase<CMonster> 
+    public class MonsterMoveState : CStateBase<CMonster> 
     {
+
         protected static MonsterIdelState instance;
-        private float curCDTime;
 
         public void Release()
         {
@@ -17,24 +17,18 @@ namespace GameLogic.AI
 
         public void Enter(CMonster type)
         {
-            curCDTime = 0;
-            type.Play(MonsterAnimation.IDEL, WrapMode.Loop);
+            type.Play(MonsterAnimation.RUN, WrapMode.Loop);
         }
 
         public void Execute(CMonster type, float time)
         {
-            if(NavigationMgr.GetInstance().GetGrid().GetDistance(CCearcueMgr.GetInstance().player.PositionInPathGrid, type.PositionInPathGrid) <= CMonsterCommon.eyeArea)
+            if (NavigationMgr.GetInstance().GetGrid().GetDistance(CCearcueMgr.GetInstance().player.PositionInPathGrid, type.PositionInPathGrid) > CMonsterCommon.eyeArea)
             {
-                type.m_stateMachine.ChangeState(MonsterMoveState.GetInstance());
+                type.m_stateMachine.ChangeState(MonsterIdelState.GetInstance());
             }
             else if (NavigationMgr.GetInstance().GetGrid().GetDistance(CCearcueMgr.GetInstance().player.PositionInPathGrid, type.PositionInPathGrid) <= CMonsterCommon.AttackArea)
             {
-                curCDTime += time;
-                if (curCDTime >= CMonsterCommon.AttackCD)
-                {
-                    curCDTime = 0;
-                    type.m_stateMachine.ChangeState(MonsterAttackState.GetInstance());
-                }
+                type.m_stateMachine.ChangeState(MonsterIdelState.GetInstance());
             }
         }
 
@@ -50,7 +44,7 @@ namespace GameLogic.AI
 
         public AIState GetState()
         {
-            return AIState.AI_STATE_STAND;
+            return AIState.AI_STATE_MOVE;
         }
 
         public static MonsterIdelState GetInstance()
