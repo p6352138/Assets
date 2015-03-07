@@ -14,7 +14,7 @@ namespace GameLogic.AI{
 
 		public void Enter(CPlayer type)
 		{
-			type.Play (PlayerPlayAnimation.WALK, WrapMode.Loop);
+			type.Play (PlayerPlayAnimation.RUN, WrapMode.Loop);
 		}
 
 		public void Execute(CPlayer type, float time)
@@ -22,7 +22,7 @@ namespace GameLogic.AI{
 			//Vector3 speed = new Vector3 (CPlayerCommon.Player_Speed * type.GetRenderObject ().transform.eulerAngles.x, 
 			//                             CPlayerCommon.Player_Speed * type.GetRenderObject ().transform.eulerAngles.z,
 			//                             CPlayerCommon.Player_Speed * type.GetRenderObject ().transform.eulerAngles.y);
-			type.GetRenderObject ().transform.Translate (Vector3.forward * CPlayerCommon.Player_Speed*time);
+			//type.GetRenderObject ().transform.Translate (Vector3.forward * CPlayerCommon.Player_Speed*time);
 		}
 
 		public void Exit(CPlayer type)
@@ -32,7 +32,25 @@ namespace GameLogic.AI{
 
 		public void OnMessage(CPlayer type, EventMessageBase data)
 		{
-			;
+			if (data.eventMessageAction == (int)EnitityCommon.EnitityAction.ENITITY_ACTION_MOVETOP) {
+				type.GetRenderObject ().transform.Translate (Vector3.forward * CPlayerCommon.Player_Speed*0.015f);
+			}
+			else if (data.eventMessageAction == (int)EnitityCommon.EnitityAction.ENITITY_ACTION_MOVEBOTTOM) {
+				type.GetRenderObject ().transform.Translate (Vector3.back * CPlayerCommon.Player_Speed*0.015f);
+			}
+			else if (data.eventMessageAction == (int)EnitityCommon.EnitityAction.ENITITY_ACTION_MOVELEFT) {
+				Vector3 angle = new Vector3(0,-1,0);
+				type.GetRenderObject ().transform.eulerAngles += angle;
+			}
+			else if (data.eventMessageAction == (int)EnitityCommon.EnitityAction.ENITITY_ACTION_MOVERIGHT) {
+				Vector3 angle = new Vector3(0,1,0);
+				type.GetRenderObject ().transform.eulerAngles += angle;
+			}
+			else if (data.eventMessageAction == (int)EnitityCommon.EnitityAction.ENITITY_ACTION_MOVEOVER) {
+				type.m_stateMachine.ChangeState (PlayerIdelState.GetInstance ());
+			}
+
+			//type.m_stateMachine.ChangeState (PlayerIdelState.GetInstance ());
 		}
 			
 		public AIState GetState()

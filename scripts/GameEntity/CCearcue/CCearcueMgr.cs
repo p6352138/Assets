@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using AppUtility;
+using GameLogic.AI;
 
 namespace GameEntity{
 	class CCearcueMgr : Singleton<CCearcueMgr> {
@@ -95,6 +96,14 @@ namespace GameEntity{
 
             foreach (CCreature item in m_monsterEntity)
                 item.Update(deltaTime);
+		}
+
+		public void MonsterOnMessage(EventMessageBase message)
+		{
+			foreach (CMonster monster in m_monsterEntity) {
+				if(monster.GetId() == message.modleId)
+					monster.OnMessage(message);
+			}
 		}
 		#endregion
 	}

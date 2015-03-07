@@ -85,14 +85,7 @@ namespace GameEntity{
 		/// <param name="message">Message.</param>
 		public void OnMessage(EventMessageBase message)
 		{
-			if(message.eventMessageModel == EventMessageModel.eEventMessageModel_Enitity)
-			{
-				//switch(message.eventMessageAction){
-				//case EnitityCommon.EnitityAction.ENITITY_ACTION_SELECT_ENITITY:
-				//		break;
-				//}
-			}
-			m_stateMachine.OnMessage(message);
+			;
 		}
 		
 		/// <summary>

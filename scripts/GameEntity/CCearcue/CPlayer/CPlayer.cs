@@ -12,6 +12,10 @@ namespace GameEntity{
 		private Animation m_animation;
 		#endregion
 
+		#region private Properties
+		private int blood;
+		#endregion
+
 		#region public Fields
 		public StateMachine<CPlayer> m_stateMachine;
 
@@ -36,6 +40,8 @@ namespace GameEntity{
 
 			m_stateMachine = new StateMachine<CPlayer> (this);
 			m_stateMachine.SetState (PlayerIdelState.GetInstance());
+
+			blood = CPlayerCommon.PlayerBlood;
 		}
 
 
@@ -68,14 +74,28 @@ namespace GameEntity{
 		/// <param name="message">Message.</param>
 		public void OnMessage(EventMessageBase message)
 		{
-			if(message.eventMessageModel == EventMessageModel.eEventMessageModel_Enitity)
+			if(message.eventMessageModel == EventMessageModel.eEventMessageModel_PLAY_MOVE_STATE)
 			{
-				//switch(message.eventMessageAction){
-					//case EnitityCommon.EnitityAction.ENITITY_ACTION_SELECT_ENITITY:
-				//		break;
-				//}
+				m_stateMachine.ChangeState(PlayerWalkState.GetInstance());
+				m_stateMachine.OnMessage(message);
 			}
-			m_stateMachine.OnMessage(message);
+			else if(message.eventMessageModel == EventMessageModel.eEventMessageModel_PLAY_STATE)
+			{
+				blood -= message.eventMessageAction;
+
+				if(blood <= 0)
+				{
+					m_stateMachine.ChangeState(PlayerDeathState.GetInstance());
+					m_stateMachine.OnMessage(message);
+				}
+				else
+				{
+					m_stateMachine.ChangeState(PlayerInjuerState.GetInstance());
+					m_stateMachine.OnMessage(message);
+				}
+
+				Debug.Log("ai a ~~~~~~~~~ blood == " + blood.ToString());
+			}
 		}
 
 		/// <summary>
@@ -136,14 +156,17 @@ namespace GameEntity{
 			if (type == PlayerPlayAnimation.IDEL) {
 				name = "idle";
 			}
-			else if (type == PlayerPlayAnimation.JUMP) {
-				name = "jump_pose";
+			else if (type == PlayerPlayAnimation.ATTACK) {
+				name = "attack";
 			}
 			else if (type == PlayerPlayAnimation.RUN) {
 				name = "run";
 			}
-			else if (type == PlayerPlayAnimation.WALK) {
-				name = "walk";
+			else if (type == PlayerPlayAnimation.INJURT) {
+				name = "injurt";
+			}
+			else if (type == PlayerPlayAnimation.DEATH) {
+				name = "death";
 			}
 
 			m_animation.Play (name);

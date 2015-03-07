@@ -5,13 +5,17 @@ namespace GameEntity{
 	public enum PlayerPlayAnimation
 	{
 		IDEL,
-		WALK,
+		DEATH,
 		RUN,
-		JUMP,
+		INJURT,
+		ATTACK,
 	}
 
 	public static class CPlayerCommon
 	{
 		public static readonly float Player_Speed = 2.0f;
+		public static readonly int PlayerBlood = 100;
+
+
 	}
 }

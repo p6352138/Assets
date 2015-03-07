@@ -6,8 +6,7 @@ namespace GameEntity
     public enum MonsterAnimation
     {
         IDEL,
-        ATTACK_1,
-        ATTACK_2,
+        ATTACK,
         DEATH,
         INJURT,
         RUN,
@@ -15,9 +14,9 @@ namespace GameEntity
 
     public static class CMonsterCommon
     {
-        public static readonly int eyeArea = 5;
-        public static readonly int AttackArea = 1;
-        public static readonly float AttackCD = 0.5f;
-
+		public static readonly int eyeArea = 10;
+        public static readonly int AttackArea = 2;
+		public static readonly float AttackCD = 0.5f;
+		public static readonly float MoveSpeed = 1.0f;
     }
 }

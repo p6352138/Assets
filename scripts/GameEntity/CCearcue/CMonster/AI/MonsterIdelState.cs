@@ -23,7 +23,8 @@ namespace GameLogic.AI
 
         public void Execute(CMonster type, float time)
         {
-            if(NavigationMgr.GetInstance().GetGrid().GetDistance(CCearcueMgr.GetInstance().player.PositionInPathGrid, type.PositionInPathGrid) <= CMonsterCommon.eyeArea)
+            if(NavigationMgr.GetInstance().GetGrid().GetDistance(CCearcueMgr.GetInstance().player.PositionInPathGrid, type.PositionInPathGrid) <= CMonsterCommon.eyeArea
+			   && NavigationMgr.GetInstance().GetGrid().GetDistance(CCearcueMgr.GetInstance().player.PositionInPathGrid, type.PositionInPathGrid) > CMonsterCommon.AttackArea)
             {
                 type.m_stateMachine.ChangeState(MonsterMoveState.GetInstance());
             }

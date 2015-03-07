@@ -11,6 +11,7 @@ namespace GameEntity
         private int m_id;
         private GameObject m_go;
         private Animation m_animation;
+		private NAnimationEvent m_aniamtionEvent;
         #endregion
 
         #region public Fields
@@ -32,6 +33,7 @@ namespace GameEntity
             m_id = id;
             m_go = go;
             m_animation = go.GetComponent<Animation>();
+			m_aniamtionEvent = go.GetComponent<NAnimationEvent> ();
 
             m_stateMachine = new StateMachine<CMonster>(this);
             m_stateMachine.SetState(MonsterIdelState.GetInstance());
@@ -39,7 +41,7 @@ namespace GameEntity
 
         public void Think()
         {
-
+			;
         }
 
         public void Update(float deltaTime)
@@ -49,6 +51,10 @@ namespace GameEntity
         }
         public void OnMessage(EventMessageBase message)
         {
+			if (message.eventMessageAction == (int)EnitityCommon.EnitityAction.ENITITY_ACTION_FIGHT_FINISH) {
+				m_stateMachine.ChangeState(MonsterIdelState.GetInstance());
+			}
+
             m_stateMachine.OnMessage(message);
         }
         public EnitityType GetEnitityType()
@@ -87,13 +93,9 @@ namespace GameEntity
             {
                 name = "idle";
             }
-            else if (type == MonsterAnimation.ATTACK_1)
+            else if (type == MonsterAnimation.ATTACK)
             {
-                name = "attack_1";
-            }
-            else if (type == MonsterAnimation.ATTACK_2)
-            {
-                name = "attack_2";
+                name = "attack";
             }
             else if (type == MonsterAnimation.DEATH)
             {

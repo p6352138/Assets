@@ -35,18 +35,18 @@ public class SceneMgr : MonoBehaviour {
 			CCearcueMgr.GetInstance().setTerrian(Terrian);
 			CCearcueMgr.GetInstance().CreateCearcue(1,CCearcueType.Terrian);
 			
-			CCearcueMgr.GetInstance().setPlayer(Player);
+			CCearcueMgr.GetInstance().setPlayer(monster4);
 			CCearcueMgr.GetInstance().CreateCearcue(1,CCearcueType.Player);
 
             CCearcueMgr.GetInstance().testMonster1 = monster1;
             CCearcueMgr.GetInstance().testMonster2 = monster2;
             CCearcueMgr.GetInstance().testMonster3 = monster3;
-            CCearcueMgr.GetInstance().testMonster4 = monster4;
+            //CCearcueMgr.GetInstance().testMonster4 = monster4;
 
             CCearcueMgr.GetInstance().CreateCearcue(1001, CCearcueType.Monster);
             CCearcueMgr.GetInstance().CreateCearcue(1002, CCearcueType.Monster);
             CCearcueMgr.GetInstance().CreateCearcue(1003, CCearcueType.Monster);
-            CCearcueMgr.GetInstance().CreateCearcue(1004, CCearcueType.Monster);
+            //CCearcueMgr.GetInstance().CreateCearcue(1004, CCearcueType.Monster);
 		}
 
         if (isOutPutMap)
