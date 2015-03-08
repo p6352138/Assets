@@ -15,7 +15,6 @@ namespace GameLogic.AI{
 		public void Enter(CPlayer type)
 		{
 			type.Play (PlayerPlayAnimation.ATTACK, WrapMode.Once);
-			type.GetAttackArea ();
 		}
 		
 		public void Execute(CPlayer type, float time)

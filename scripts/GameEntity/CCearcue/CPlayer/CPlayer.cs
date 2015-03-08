@@ -64,7 +64,7 @@ namespace GameEntity{
 			testArea[7] = NavigationMgr.GetInstance ().GetGrid ().GetCellIndex (column - 1,row    );
 
 			int eulerIndex = (int)(m_go.transform.eulerAngles.y / 45);
-			int testIndex = 0;
+			int testIndex = 5;
 
 			for (int i = 0; i<3; i++) {
 
@@ -118,25 +118,31 @@ namespace GameEntity{
 			}
 			else if(message.eventMessageModel == EventMessageModel.eEventMessageModel_PLAY_STATE)
 			{
-				blood -= message.eventMessageAction;
-
-				if(blood <= 0)
+				if(message.eventMessageAction == (int)EnitityCommon.EnitityAction.ENITITY_ACTION_FIGHT_FINISH)
 				{
-					m_stateMachine.ChangeState(PlayerDeathState.GetInstance());
+					m_stateMachine.ChangeState(PlayerIdelState.GetInstance());
 					m_stateMachine.OnMessage(message);
 				}
-				else
-				{
-					m_stateMachine.ChangeState(PlayerInjuerState.GetInstance());
-					m_stateMachine.OnMessage(message);
-				}
+				else{
+					blood -= message.eventMessageAction;
 
-				Debug.Log("ai a ~~~~~~~~~ blood == " + blood.ToString());
+					if(blood <= 0)
+					{
+						m_stateMachine.ChangeState(PlayerDeathState.GetInstance());
+						m_stateMachine.OnMessage(message);
+					}
+					else
+					{
+						m_stateMachine.ChangeState(PlayerInjuerState.GetInstance());
+						m_stateMachine.OnMessage(message);
+					}
+
+					Debug.Log("ai a ~~~~~~~~~ blood == " + blood.ToString());
+				}
 			}
 			else if(message.eventMessageModel == EventMessageModel.eEventMessageModel_PLAY_ATTACK_STATE)
 			{
 				m_stateMachine.ChangeState(PlayerAttackState.GetInstance());
-
 			}
 		}
 

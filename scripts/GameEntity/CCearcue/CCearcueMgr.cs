@@ -111,6 +111,9 @@ namespace GameEntity{
 		{
 			foreach (int i in area) {
 				foreach (CMonster monster in m_monsterEntity) {
+					Debug.Log(NavigationMgr.GetInstance().GetGrid().GetCellIndex(monster.GetRenderObject().transform.localPosition).ToString() +
+					          " =========== monster Index");
+					Debug.Log(i.ToString() +" =========== attack Index");
 					if(NavigationMgr.GetInstance().GetGrid().GetCellIndex(monster.GetRenderObject().transform.localPosition) == i)
 						monster.OnMessage(message);
 				}
