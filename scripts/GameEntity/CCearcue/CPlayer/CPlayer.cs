@@ -14,6 +14,7 @@ namespace GameEntity{
 
 		#region private Properties
 		private int blood;
+		private int[] attackArea;
 		#endregion
 
 		#region public Fields
@@ -42,8 +43,44 @@ namespace GameEntity{
 			m_stateMachine.SetState (PlayerIdelState.GetInstance());
 
 			blood = CPlayerCommon.PlayerBlood;
+			attackArea = new int[3];
 		}
 
+		#region public function
+		public int[] GetAttackArea(){
+			int[] testArea = new int[8];
+
+			int curIndex = NavigationMgr.GetInstance ().GetGrid ().GetPathNodeIndex (m_go.transform.localPosition);
+			int column = NavigationMgr.GetInstance ().GetGrid ().GetColumn (curIndex);
+			int row = NavigationMgr.GetInstance ().GetGrid ().GetRow (curIndex);
+
+			testArea[0] = NavigationMgr.GetInstance ().GetGrid ().GetCellIndex (column - 1,row - 1);
+			testArea[1] = NavigationMgr.GetInstance ().GetGrid ().GetCellIndex (column    ,row - 1);
+			testArea[2] = NavigationMgr.GetInstance ().GetGrid ().GetCellIndex (column + 1,row - 1);
+			testArea[3] = NavigationMgr.GetInstance ().GetGrid ().GetCellIndex (column + 1,row 	  );
+			testArea[4] = NavigationMgr.GetInstance ().GetGrid ().GetCellIndex (column + 1,row + 1);
+			testArea[5] = NavigationMgr.GetInstance ().GetGrid ().GetCellIndex (column    ,row + 1);
+			testArea[6] = NavigationMgr.GetInstance ().GetGrid ().GetCellIndex (column - 1,row + 1);
+			testArea[7] = NavigationMgr.GetInstance ().GetGrid ().GetCellIndex (column - 1,row    );
+
+			int eulerIndex = (int)(m_go.transform.eulerAngles.y / 45);
+			int testIndex = 0;
+
+			for (int i = 0; i<3; i++) {
+
+				if(eulerIndex + i >= 8)
+				{
+					testIndex = eulerIndex + i - 8;
+				}
+				else{
+					testIndex = eulerIndex + i;
+				}
+				attackArea[i] = testArea[testIndex];
+			}			
+
+			return attackArea;
+		}
+		#endregion
 
 		#region interface function
 		/// <summary>
@@ -95,6 +132,11 @@ namespace GameEntity{
 				}
 
 				Debug.Log("ai a ~~~~~~~~~ blood == " + blood.ToString());
+			}
+			else if(message.eventMessageModel == EventMessageModel.eEventMessageModel_PLAY_ATTACK_STATE)
+			{
+				m_stateMachine.ChangeState(PlayerAttackState.GetInstance());
+
 			}
 		}
 

@@ -8,6 +8,7 @@ namespace GameLogic.AI{
 		eEventMessageModel_MONSTER_STATE		,
 		eEventMessageModel_PLAY_STATE			,	// PLAY_STATE
 		eEventMessageModel_PLAY_MOVE_STATE		,
+		eEventMessageModel_PLAY_ATTACK_STATE	,
 	}
 	
 	public class EventMessageBase

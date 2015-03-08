@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using AppUtility;
 using GameLogic.AI;
+using GameLogic.Navigation;
 
 namespace GameEntity{
 	class CCearcueMgr : Singleton<CCearcueMgr> {
@@ -103,6 +104,16 @@ namespace GameEntity{
 			foreach (CMonster monster in m_monsterEntity) {
 				if(monster.GetId() == message.modleId)
 					monster.OnMessage(message);
+			}
+		}
+
+		public void MonsterBeAttack(int[] area,EventMessageBase message)
+		{
+			foreach (int i in area) {
+				foreach (CMonster monster in m_monsterEntity) {
+					if(NavigationMgr.GetInstance().GetGrid().GetCellIndex(monster.GetRenderObject().transform.localPosition) == i)
+						monster.OnMessage(message);
+				}
 			}
 		}
 		#endregion

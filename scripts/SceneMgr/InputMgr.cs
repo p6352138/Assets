@@ -46,24 +46,28 @@ public class InputMgr : MonoBehaviour {
 
 	void MoveTop()
 	{
+		message.eventMessageModel = EventMessageModel.eEventMessageModel_PLAY_MOVE_STATE;
 		message.eventMessageAction = (int)EnitityCommon.EnitityAction.ENITITY_ACTION_MOVETOP;
 		CCearcueMgr.GetInstance ().player.OnMessage (message);
 	}
 
 	void MoveBottom()
 	{
+		message.eventMessageModel = EventMessageModel.eEventMessageModel_PLAY_MOVE_STATE;
 		message.eventMessageAction = (int)EnitityCommon.EnitityAction.ENITITY_ACTION_MOVEBOTTOM;
 		CCearcueMgr.GetInstance ().player.OnMessage (message);
 	}
 
 	void MoveLeft()
 	{
+		message.eventMessageModel = EventMessageModel.eEventMessageModel_PLAY_MOVE_STATE;
 		message.eventMessageAction = (int)EnitityCommon.EnitityAction.ENITITY_ACTION_MOVELEFT;
 		CCearcueMgr.GetInstance ().player.OnMessage (message);
 	}
 
 	void MoveRight()
 	{
+		message.eventMessageModel = EventMessageModel.eEventMessageModel_PLAY_MOVE_STATE;
 		message.eventMessageAction = (int)EnitityCommon.EnitityAction.ENITITY_ACTION_MOVERIGHT;
 		CCearcueMgr.GetInstance ().player.OnMessage (message);
 	}
@@ -75,6 +79,8 @@ public class InputMgr : MonoBehaviour {
 
 	void Attack()
 	{
-		Debug.Log("~~~~~~~~~~Attack~~~~~~~~~~~~~");
+		message.eventMessageModel = EventMessageModel.eEventMessageModel_PLAY_ATTACK_STATE;
+		message.eventMessageAction = (int)EnitityCommon.EnitityAction.ENITITY_ACTION_FIGHT;
+		CCearcueMgr.GetInstance ().player.OnMessage (message);
 	}
 }

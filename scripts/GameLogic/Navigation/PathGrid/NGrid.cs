@@ -139,6 +139,10 @@ namespace GameLogic.Navigation{
 			return (row * m_Columns + col);
 		}
 
+		public int GetCellIndex(int col,int row)
+		{
+			return (row * m_Columns + col);
+		}
 		/// <summary>
 		/// Returns the lower left position of the grid cell at the passed tile index. The origin of the grid is at the lower left,
 		/// so it uses a cartesian coordinate system.
