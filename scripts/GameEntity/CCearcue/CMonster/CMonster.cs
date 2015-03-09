@@ -12,6 +12,7 @@ namespace GameEntity
         private GameObject m_go;
         private Animation m_animation;
 		private NAnimationEvent m_aniamtionEvent;
+        private int m_blood;
         #endregion
 
         #region public Fields
@@ -37,6 +38,8 @@ namespace GameEntity
 
             m_stateMachine = new StateMachine<CMonster>(this);
             m_stateMachine.SetState(MonsterIdelState.GetInstance());
+
+            m_blood = CMonsterCommon.Boold;
         }
 
         public void Think()
@@ -51,9 +54,28 @@ namespace GameEntity
         }
         public void OnMessage(EventMessageBase message)
         {
-			if (message.eventMessageAction == (int)EnitityCommon.EnitityAction.ENITITY_ACTION_FIGHT_FINISH) {
-				m_stateMachine.ChangeState(MonsterIdelState.GetInstance());
-			}
+            if (message.eventMessageModel == EventMessageModel.eEventMessageModel_PLAY_ATTACK_STATE)
+            {
+                m_blood -= message.eventMessageAction;
+
+                if (m_blood <= 0)
+                {
+                    m_stateMachine.ChangeState(MonsterDeathState.GetInstance());
+                }
+                else
+                {
+                    m_stateMachine.ChangeState(MonsterInjurtState.GetInstance());
+                }
+
+                Debug.Log("monster blood ="+m_blood.ToString());
+            }
+            else
+            {
+                if (message.eventMessageAction == (int)EnitityCommon.EnitityAction.ENITITY_ACTION_FIGHT_FINISH)
+                {
+                    m_stateMachine.ChangeState(MonsterIdelState.GetInstance());
+                }
+            }
 
             m_stateMachine.OnMessage(message);
         }

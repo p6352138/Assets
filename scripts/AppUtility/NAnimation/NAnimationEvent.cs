@@ -33,4 +33,13 @@ public class NAnimationEvent : MonoBehaviour {
 		message.modleId = int.Parse (this.name);
 		CCearcueMgr.GetInstance ().MonsterOnMessage (message);
 	}
+
+    void injurtOver()
+    {
+        EventMessageBase message = new EventMessageBase();
+        message.eventMessageAction = (int)EnitityCommon.EnitityAction.ENITITY_ACTION_FIGHT_FINISH;
+        message.eventMessageModel = EventMessageModel.eEventMessageModel_MONSTER_STATE;
+        message.modleId = int.Parse(this.name);
+        CCearcueMgr.GetInstance().MonsterOnMessage(message);
+    }
 }

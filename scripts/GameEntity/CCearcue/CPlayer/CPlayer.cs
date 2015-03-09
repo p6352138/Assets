@@ -64,7 +64,7 @@ namespace GameEntity{
 			testArea[7] = NavigationMgr.GetInstance ().GetGrid ().GetCellIndex (column - 1,row    );
 
 			int eulerIndex = (int)(m_go.transform.eulerAngles.y / 45);
-			int testIndex = 5;
+			int testIndex = 6;
 
 			for (int i = 0; i<3; i++) {
 
@@ -137,7 +137,7 @@ namespace GameEntity{
 						m_stateMachine.OnMessage(message);
 					}
 
-					Debug.Log("ai a ~~~~~~~~~ blood == " + blood.ToString());
+					//Debug.Log("ai a ~~~~~~~~~ blood == " + blood.ToString());
 				}
 			}
 			else if(message.eventMessageModel == EventMessageModel.eEventMessageModel_PLAY_ATTACK_STATE)

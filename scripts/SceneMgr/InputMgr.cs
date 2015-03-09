@@ -7,6 +7,12 @@ public class InputMgr : MonoBehaviour {
 
 	EventMessageBase message; 
 
+    public int x;
+    public int y;
+    public int width;
+    public int height;
+
+
 	void Start () {
 		message = new EventMessageBase ();
 		message.eventMessageModel = EventMessageModel.eEventMessageModel_PLAY_MOVE_STATE;
@@ -43,6 +49,32 @@ public class InputMgr : MonoBehaviour {
 		
 		#endif
 	}
+
+    void OnGUI() 
+    {
+        #if UNITY_ANDROID 
+        if (GUI.Button(new Rect(65, 320, 50, 50), "W"))
+        {
+            MoveTop();
+        }
+        else if (GUI.Button(new Rect(65, 400, 50, 50), "S"))
+        {
+            MoveBottom();
+        }
+        else if (GUI.Button(new Rect(6, 360, 50, 50), "A"))
+        {
+            MoveLeft();
+        }
+        else if (GUI.Button(new Rect(121, 360, 50, 50), "D"))
+        {
+            MoveRight();
+        }
+        else if (GUI.Button(new Rect(600, 360, 50, 50), "J"))
+        {
+            Attack();
+        }
+        #endif
+    }
 
 	void MoveTop()
 	{
